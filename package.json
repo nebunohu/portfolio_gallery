@@ -1,0 +1,36 @@
+{
+  "name": "portfolio_gallery",
+  "version": "1.0.0",
+  "description": "Julia Greza portfolio gallery",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "set NODE_ENV=development && webpack --mode development",
+    "build": "set NODE_ENV=production && webpack --mode production",
+    "start": "webpack serve --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nebunohu/portfolio_gallery.git"
+  },
+  "author": "N. Barashkov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nebunohu/portfolio_gallery/issues"
+  },
+  "homepage": "https://github.com/nebunohu/portfolio_gallery#readme",
+  "devDependencies": {
+    "copy-webpack-plugin": "^8.1.0",
+    "css-loader": "^5.1.1",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.24.4",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
