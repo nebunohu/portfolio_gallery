@@ -1,0 +1,22 @@
+.sections__element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 0 50%;
+    height: 540px;
+    max-width: 50%;
+    font-size: 5em;
+    letter-spacing: -50px;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.sections__element:hover {
+    opacity: 0.75;
+    letter-spacing: 0em;
+}
+
+@import './_art/art';
+@import './_design/design';
+@import './_photo/photo';
+@import './_illustration/illustration';
