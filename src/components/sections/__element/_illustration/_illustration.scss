@@ -1,5 +1,7 @@
 .sections__element_illustration {
     background-color: #3a7ca5;
-    -webkit-text-fill-color: transparent;
+}
+
+.sections__element_illustration a {
     -webkit-text-stroke: 4px rgba(255, 236, 209, 1);
 }

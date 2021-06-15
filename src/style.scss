@@ -1,6 +1,7 @@
 @import './components/intro/intro.scss';
 @import './components/sections/sections.scss';
 @import './components/up/up.scss';
+@import './components/projects/projects.scss';
 
 @font-face {
 	font-family: 'Conv_Kioea';
@@ -109,7 +110,7 @@ body {
     margin-right: auto;
     background-color: black;
     max-width: 1920px;
-    /*min-width: 960px;*/
+    min-width: 960px;
 }
 
 header {
@@ -127,14 +128,15 @@ header {
 nav a {
   margin-right: 45px;
 }
-
+ 
 a {
-    position: relative;
-    text-decoration: none;
-    color: white;
+  position: relative;
+  text-decoration: none;
+  color: white;
 }
 
-a:hover:after {
+
+.text-link:hover:after {
   content: " ";
   position: absolute;
   left: 0;

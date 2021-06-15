@@ -1,5 +1,7 @@
 .sections__element_photo  {
     background-color: #726e60;
-    -webkit-text-fill-color: transparent;
+}
+
+.sections__element_photo a {
     -webkit-text-stroke: 4px rgba(255, 236, 209, 1);
 }

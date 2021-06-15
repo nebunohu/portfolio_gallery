@@ -1,0 +1,9 @@
+@import './__image/_image';
+@import './__name/_name';
+@import './__year/_year';
+@import './__item/_item';
+
+.projects {
+    display: flex;
+    flex-flow: row wrap;
+}
