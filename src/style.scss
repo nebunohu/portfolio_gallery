@@ -2,6 +2,7 @@
 @import './components/sections/sections.scss';
 @import './components/up/up.scss';
 @import './components/projects/projects.scss';
+@import './components/bg-eye/bg-eye.scss';
 
 @font-face {
 	font-family: 'Conv_Kioea';
@@ -86,16 +87,6 @@ button,
 textarea,
 select {
   font: inherit;
-}
-
-/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
 
 html {
