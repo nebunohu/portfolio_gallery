@@ -1,3 +1,13 @@
 .projects__item {
-    
+    /*display: flex;
+    flex-flow: column nowrap;*/
+    padding-top: 0px;
+    padding-bottom: 400px;
+    width: 350px;
+}
+
+.projects__item:nth-child(even) {
+    /*flex-flow: column-reverse nowrap;*/
+    padding-top: 400px;
+    padding-bottom: 0px;
 }
