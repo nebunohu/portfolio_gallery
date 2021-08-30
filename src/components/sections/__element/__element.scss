@@ -10,8 +10,10 @@
 }
 
 .sections__element:hover {
-    opacity: 0.8;
-    letter-spacing: 0em;
+    
+    animation-duration: 0.5s;
+    animation-name: text-slide;
+    animation-fill-mode: forwards;
 }
 
 .sections__element a {
@@ -25,6 +27,17 @@
 
 .sections__element a:hover:after {
     display: none;
+}
+
+@keyframes text-slide {
+    from {
+        opacity: 1;
+        letter-spacing: -50px;
+    }
+    to {
+        opacity: 0.8;
+        letter-spacing: -20px;
+    }
 }
 
 @import './_art/art';

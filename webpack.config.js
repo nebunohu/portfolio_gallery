@@ -83,6 +83,10 @@ module.exports = {
             filename: "photo-section.html",
             template: path.resolve(__dirname, "./src/photo-section.html")
         }),
+        new HtmlWebpackPlugin( {
+            filename: "tarot-project.html",
+            template: path.resolve(__dirname, "./src/tarot-project.html")
+        }),
     ],
     devServer: {
         stats: 'errors-only'
