@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-    entry: path.resolve(__dirname, "./src/index.js"),
+    entry: path.resolve(__dirname, "./client/index.js"),
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: 'index.js',
@@ -65,27 +65,27 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin( {
             filename: "index.html",
-            template: path.resolve(__dirname, "./src/index.html")
+            template: path.resolve(__dirname, "./client/index.html")
         }),
         new HtmlWebpackPlugin( {
             filename: "art-section.html",
-            template: path.resolve(__dirname, "./src/art-section.html")
+            template: path.resolve(__dirname, "./client/art-section.html")
         }),
         new HtmlWebpackPlugin( {
             filename: "design-section.html",
-            template: path.resolve(__dirname, "./src/design-section.html")
+            template: path.resolve(__dirname, "./client/design-section.html")
         }),
         new HtmlWebpackPlugin( {
             filename: "illustration-section.html",
-            template: path.resolve(__dirname, "./src/illustration-section.html")
+            template: path.resolve(__dirname, "./client/illustration-section.html")
         }),
         new HtmlWebpackPlugin( {
             filename: "photo-section.html",
-            template: path.resolve(__dirname, "./src/photo-section.html")
+            template: path.resolve(__dirname, "./client/photo-section.html")
         }),
         new HtmlWebpackPlugin( {
             filename: "tarot-project.html",
-            template: path.resolve(__dirname, "./src/tarot-project.html")
+            template: path.resolve(__dirname, "./client/tarot-project.html")
         }),
     ],
     devServer: {
