@@ -20,6 +20,22 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'NAMU Pro';
+	src: url('./fonts/NAMU-Pro.eot');
+	src: local('☺'), url('./fonts/NAMU-Pro.woff') format('woff'), url('./fonts/NAMU-Pro.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NAMU 1750';
+	src: url('./fonts/NAMU-1750.eot');
+	src: local('☺'), url('./fonts/NAMU-1750.woff') format('woff'), url('./fonts/NAMU-1750.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /* Указываем box sizing */
 *,
 *::before,
@@ -90,8 +106,8 @@ select {
 }
 
 html {
-    font-family: 'Conv_Kioea', 'Times New Roman', serif;
-    font-size: 37px;
+    font-family: 'NAMU Pro', 'Arial', sans-serif;
+    font-size: 12px;
     color: white;
 }
 
@@ -114,10 +130,15 @@ header {
     justify-content: flex-end;
     padding: 50px;
     z-index: 10;
+    font-family: 'NAMU 1750', 'Arial', sans-serif;
+    font-size: 25px;
 }
 
 nav a {
-  margin-right: 45px;
+  margin-right: 110px;
+}
+nav a:last-child {
+  margin-right: 0px;
 }
  
 a {
@@ -141,7 +162,7 @@ main {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    padding: 150px 0 150px 0;
+    padding: 180px 0 150px 0;
     /*min-width: 960px;*/
     width: 100%;
     background-color: black;    

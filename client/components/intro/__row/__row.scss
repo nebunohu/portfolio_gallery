@@ -1,0 +1,14 @@
+
+
+.intro__row {
+    position: absolute;
+    font-size: 8em;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: -8px;
+    line-height: 62px;
+}
+
+@import './_transparent/transparent';
+@import './_second/second';
+@import './_third/third';
+@import './_fourth/fourth';

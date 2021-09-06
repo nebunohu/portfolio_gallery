@@ -3,10 +3,12 @@
 @import './__artist-surname/_artist-surname';
 @import './__eye/_eye';
 @import './__i-am-creator/_i-am-creator';
+@import './__row/_row';
 
 .intro {
     position: relative;
     height: 930px;
     width: 100%;
+    padding: 0 186px;
 }
 
