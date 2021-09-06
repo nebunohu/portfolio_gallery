@@ -1,0 +1,11 @@
+@import './__introduce-wrapper/_introduce-wrapper';
+@import './__artist-name/_artist-name';
+@import './__artist-location/_artist-location';
+@import './__central-text/_central-text';
+@import './__art-description/_art-description';
+
+.cv {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
