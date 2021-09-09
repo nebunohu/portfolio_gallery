@@ -1,7 +1,7 @@
-.cv__introduce-wrapper {
+.info__contacts-wrapper {
+    position: relative;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    width: 1505px;
-    height: 207px;
+    min-width: 1350px;
 }

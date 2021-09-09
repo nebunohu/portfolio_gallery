@@ -1,1 +1,17 @@
 @import './__header/__header';
+@import './__contacts-wrapper/__contacts-wrapper';
+@import './__contact1/_contact1';
+@import './__contact2/_contact2';
+@import './__contact4/_contact4';
+@import './__contact5/_contact5';
+@import './__phone/_phone';
+
+.info {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 335px 135px 0 135px;
+    height: 1465px;
+    width: 100%;
+}
