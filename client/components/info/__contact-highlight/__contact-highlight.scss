@@ -1,0 +1,12 @@
+.info__contact-highlight {
+    position: absolute;
+    left: 10px;
+    top: -10px;
+    opacity: 0;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.info__contact-highlight:hover {
+    opacity: 1;
+}

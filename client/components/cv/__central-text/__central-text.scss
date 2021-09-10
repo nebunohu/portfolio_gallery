@@ -1,19 +1,13 @@
 .cv__central-text {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
     position: relative;
-    font-size: 2.5em;
-    font-style: italic;
+    font-size: 3.4em;
+    font-style: oblique;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    width: 425px;
+    width: 600px;
+    height: 370px;
     margin-top:  55px;
-}
-
-.cv__central-text::after {
-    position: absolute;
-    left: 0px;
-    right: 0;
-    bottom: 9px;
-    display: block;
-    content: "";
-    border-bottom: 1px solid rgb(255, 255, 255);
-    
 }

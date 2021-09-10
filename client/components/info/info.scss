@@ -1,10 +1,12 @@
 @import './__header/__header';
 @import './__contacts-wrapper/__contacts-wrapper';
+@import './__contact/_contact';
 @import './__contact1/_contact1';
 @import './__contact2/_contact2';
 @import './__contact4/_contact4';
 @import './__contact5/_contact5';
 @import './__phone/_phone';
+@import './__contact-highlight/_contact-highlight';
 
 .info {
     display: flex;
