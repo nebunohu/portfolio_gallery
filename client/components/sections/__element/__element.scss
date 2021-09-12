@@ -15,10 +15,10 @@
 }
 
 .sections__element:hover {
-    opacity: 1;
-    /*animation-duration: 0.5s;
-    animation-name: text-slide;
-    animation-fill-mode: forwards;*/
+    //opacity: 1;
+    animation-duration: 0.5s;
+    animation-name: fading;
+    animation-fill-mode: forwards;
 }
 
 .sections__element a {
@@ -32,6 +32,15 @@
 
 .sections__element a:hover:after {
     display: none;
+}
+
+@keyframes fading { 
+    from {
+        opacity: 0.6;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /*@keyframes text-slide {

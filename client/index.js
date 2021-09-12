@@ -9,3 +9,16 @@ import './images/phone.png';
 import './images/lets_collaborate.svg';
 
 //fetch('http://localhost:3000')
+
+(function () {
+    function backToTop() {
+        if (window.pageYOffset > 0) {
+          window.scrollBy(0, -30);
+          setTimeout(backToTop, 0);
+        }
+      }
+
+    let upButton = document.querySelector('.up');
+
+    upButton.addEventListener('click', backToTop);
+})();
