@@ -17,11 +17,15 @@ import './images/lets_collaborate.svg';
         }
       }
 
-      async function loginHandler(event) {
+      /*async*/ function loginHandler(event) {
+        const login = this[0].value;
+        const password = this[1].value;
+
       event.preventDefault();
       //fetch('http://localhost:3000',{method: 'GET', mode: 'no-cors'});
       try {
-        const response = await fetch('http://localhost:3000', {method: 'POST'});
+        const response = /*await*/ fetch('http://localhost:3000/auth/login', {method: 'POST', body: {login: login, password: password}});
+        console.log('Login: '+login+', password: '+password);
         if ( !response.ok ) {
           throw new Error ('Ответ сети был не ок.');
         } 
