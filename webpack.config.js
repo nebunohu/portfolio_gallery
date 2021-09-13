@@ -60,6 +60,16 @@ module.exports = {
                     filename: "fonts/[hash][ext][query]",
                 },
            },
+           {
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                  presets: ['@babel/preset-env']
+              }
+            }
+          },
         ]
     },
     plugins: [
@@ -86,6 +96,10 @@ module.exports = {
         new HtmlWebpackPlugin( {
             filename: "tarot-project.html",
             template: path.resolve(__dirname, "./client/tarot-project.html")
+        }),
+        new HtmlWebpackPlugin( {
+            filename: "admin.html",
+            template: path.resolve(__dirname, "./client/admin.html")
         }),
     ],
     devServer: {

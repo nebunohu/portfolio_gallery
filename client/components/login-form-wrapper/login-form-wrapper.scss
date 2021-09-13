@@ -1,0 +1,13 @@
+@import './__input/_input';
+@import './__login-label/_login-label';
+
+.login-form-wrapper {
+    width: 400px;
+    height: 200px;
+    border: 2px solid white;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}

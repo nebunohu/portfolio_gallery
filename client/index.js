@@ -8,7 +8,6 @@ import './images/devka-bez-ruki.png';
 import './images/phone.png';
 import './images/lets_collaborate.svg';
 
-//fetch('http://localhost:3000')
 
 (function () {
     function backToTop() {
@@ -18,7 +17,31 @@ import './images/lets_collaborate.svg';
         }
       }
 
-    let upButton = document.querySelector('.up');
+      async function loginHandler(event) {
+      event.preventDefault();
+      //fetch('http://localhost:3000',{method: 'GET', mode: 'no-cors'});
+      try {
+        const response = await fetch('http://localhost:3000', {method: 'POST'});
+        if ( !response.ok ) {
+          throw new Error ('Ответ сети был не ок.');
+        } 
+      } catch (error) {
+        console.log( 'Возникла проблема с вашим fetch запросом: ', error.message);
+      }
+    }
 
-    upButton.addEventListener('click', backToTop);
+    let upButton = document.querySelector('.up') ? document.querySelector('.up') : null;
+    let submitButton = document.querySelector('.login-form-wrapper__submit-button') ? document.querySelector('.login-form-wrapper__submit-button') : null;
+    let loginForm = document.querySelector('.login-form-wrapper') ? document.querySelector('.login-form-wrapper') : null;
+
+    if ( upButton ) 
+      upButton.addEventListener('click', backToTop);
+
+    /*if ( submitButton ) {
+      submitButton.addEventListener('click', loginHandler);
+    }*/
+
+    if ( loginForm ) {
+      loginForm.addEventListener('submit', loginHandler);
+    }
 })();

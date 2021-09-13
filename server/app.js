@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
   console.log('GET catched!!!');
 })
 
+app.post('/', (req, res) => {
+  console.log('POST catched!!!');
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
