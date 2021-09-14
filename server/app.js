@@ -1,12 +1,17 @@
 const express = require('express');
+const cors = require('cors');
 //const config = require('config');
 const app = express();
 const PORT = /*config.get('port') ||*/ 3000;
 const bp = require('body-parser')
 
+/*app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));*/
+app.use(express.json({extended: true}));
+app.use(cors());
+
 async function start() {
-  app.use(bp.json());
-  app.use(bp.urlencoded({ extended: true }));
+  
 
   app.get( '/', ( req, res ) => {
     res.send( 'Hello World!' )
