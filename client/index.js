@@ -34,20 +34,24 @@ import 'babel-polyfill';
             } else {
               console.log('OK!');
               let mainBlock = document.querySelector("main");
-              mainBlock.innerHTML = `<h1>hello friend</h1>
-              <ul>
-                <li>
-                  Art
+              mainBlock.innerHTML = `
+                <div class="admin-dashboard-wrapper">
+                  <h1>hello friend</h1>
                   <ul>
-                    <li>prj1</li>
-                    <li>prj2</li>
-                    <li>prj3</li>
+                    <li>
+                      Art
+                      <ul>
+                        <li>prj1</li>
+                        <li>prj2</li>
+                        <li>prj3</li>
+                      </ul>
+                    </li>
+                    <li>Photo</li>
+                    <li>Illustration</li>
+                    <li>Design</li>
                   </ul>
-                </li>
-                <li>Photo</li>
-                <li>Illustration</li>
-                <li>Design</li>
-              </ul>`;
+                </div>
+              `;
 
             }
         } catch (error) {
