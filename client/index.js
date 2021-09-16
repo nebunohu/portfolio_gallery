@@ -33,6 +33,22 @@ import 'babel-polyfill';
               throw new Error ('Ответ сети был не ок.');
             } else {
               console.log('OK!');
+              let mainBlock = document.querySelector("main");
+              mainBlock.innerHTML = `<h1>hello friend</h1>
+              <ul>
+                <li>
+                  Art
+                  <ul>
+                    <li>prj1</li>
+                    <li>prj2</li>
+                    <li>prj3</li>
+                  </ul>
+                </li>
+                <li>Photo</li>
+                <li>Illustration</li>
+                <li>Design</li>
+              </ul>`;
+
             }
         } catch (error) {
             console.log( 'Возникла проблема с вашим fetch запросом: ', error.message);
