@@ -71,7 +71,7 @@ async function start() {
     
   });
 
-  app.put('/files/public/projects/art', (req,res) => {
+  app.put('/public/projects/art', (req,res) => {
     console.log('PUT!');
     res.json('ok');
   });

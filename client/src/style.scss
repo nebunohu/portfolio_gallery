@@ -1,41 +1,41 @@
-@import './src/components/intro/intro.scss';
-@import './src/components/sections/sections.scss';
-@import './src/components/up/up.scss';
-@import './src/components/projects/projects.scss';
-@import './src/components/bg-eye/bg-eye.scss';
-@import './src/components/info/info.scss';
-@import './src/components/cv/cv.scss';
-@import './src/components/login-form-wrapper/login-form-wrapper.scss';
-@import './src/components/admin-dashboard-wrapper/admin-dashboard-wrapper.scss';
+@import './components/intro/intro.scss';
+@import './components/sections/sections.scss';
+@import './components/up/up.scss';
+@import './components/projects/projects.scss';
+@import './components/bg-eye/bg-eye.scss';
+@import './components/info/info.scss';
+@import './components/cv/cv.scss';
+@import './components/login-form-wrapper/login-form-wrapper.scss';
+@import './components/admin-dashboard-wrapper/admin-dashboard-wrapper.scss';
 
 @font-face {
 	font-family: 'Conv_Kioea';
-	src: url('./src/fonts/Kioea.eot');
-	src: local('☺'), url('./src/fonts/Kioea.woff') format('woff'), url('./src/fonts/Kioea.ttf') format('truetype'), url('./src/fonts/Kioea.svg') format('svg');
+	src: url('./fonts/Kioea.eot');
+	src: local('☺'), url('./fonts/Kioea.woff') format('woff'), url('./fonts/Kioea.ttf') format('truetype'), url('./fonts/Kioea.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Myriad Pro';
-	src: url('./src/fonts/MyriadProRegular.eot');
-	src: local('☺'), url('./src/fonts/MyriadProRegular.woff') format('woff'), url('./src/fonts/MyriadProRegular.ttf') format('truetype');
+	src: url('./fonts/MyriadProRegular.eot');
+	src: local('☺'), url('./fonts/MyriadProRegular.woff') format('woff'), url('./fonts/MyriadProRegular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'NAMU Pro';
-	src: url('./src/fonts/NAMU-Pro.eot');
-	src: local('☺'), url('./src/fonts/NAMU-Pro.woff') format('woff'), url('./src/fonts/NAMU-Pro.ttf') format('truetype');
+	src: url('./fonts/NAMU-Pro.eot');
+	src: local('☺'), url('./fonts/NAMU-Pro.woff') format('woff'), url('./fonts/NAMU-Pro.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'NAMU 1750';
-	src: url('./src/fonts/NAMU-1750.eot');
-	src: local('☺'), url('./src/fonts/NAMU-1750.woff') format('woff'), url('./src/fonts/NAMU-1750.ttf') format('truetype');
+	src: url('./fonts/NAMU-1750.eot');
+	src: local('☺'), url('./fonts/NAMU-1750.woff') format('woff'), url('./fonts/NAMU-1750.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }

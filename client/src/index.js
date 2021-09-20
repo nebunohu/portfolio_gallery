@@ -1,4 +1,4 @@
-import '../style.scss';
+import './style.scss';
 import './images/eye.png';
 import './images/eye2.png';
 import './images/tarot.png';
@@ -8,7 +8,7 @@ import './images/devka-bez-ruki.png';
 import './images/phone.png';
 import './images/lets_collaborate.svg';
 import 'babel-polyfill';
-import {pasteHtmlTemplate} from './adminDashboard.js';
+import {pasteHtmlTemplate} from './adminDashboard';
 
 
 (function () {

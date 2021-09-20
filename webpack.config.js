@@ -75,31 +75,31 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin( {
             filename: "index.html",
-            template: path.resolve(__dirname, "./client/index.html")
+            template: path.resolve(__dirname, "./client/src/index.html")
         }),
         new HtmlWebpackPlugin( {
             filename: "art-section.html",
-            template: path.resolve(__dirname, "./client/art-section.html")
+            template: path.resolve(__dirname, "./client/src/art-section.html")
         }),
         new HtmlWebpackPlugin( {
             filename: "design-section.html",
-            template: path.resolve(__dirname, "./client/design-section.html")
+            template: path.resolve(__dirname, "./client/src/design-section.html")
         }),
         new HtmlWebpackPlugin( {
             filename: "illustration-section.html",
-            template: path.resolve(__dirname, "./client/illustration-section.html")
+            template: path.resolve(__dirname, "./client/src/illustration-section.html")
         }),
         new HtmlWebpackPlugin( {
             filename: "photo-section.html",
-            template: path.resolve(__dirname, "./client/photo-section.html")
+            template: path.resolve(__dirname, "./client/src/photo-section.html")
         }),
         new HtmlWebpackPlugin( {
             filename: "tarot-project.html",
-            template: path.resolve(__dirname, "./client/tarot-project.html")
+            template: path.resolve(__dirname, "./client/src/tarot-project.html")
         }),
         new HtmlWebpackPlugin( {
             filename: "admin.html",
-            template: path.resolve(__dirname, "./client/admin.html")
+            template: path.resolve(__dirname, "./client/src/admin.html")
         }),
     ],
     devServer: {
