@@ -1,4 +1,4 @@
-import './style.scss';
+import '../style.scss';
 import './images/eye.png';
 import './images/eye2.png';
 import './images/tarot.png';
@@ -8,6 +8,7 @@ import './images/devka-bez-ruki.png';
 import './images/phone.png';
 import './images/lets_collaborate.svg';
 import 'babel-polyfill';
+import {pasteHtmlTemplate} from './adminDashboard.js';
 
 
 (function () {
@@ -33,25 +34,7 @@ import 'babel-polyfill';
               throw new Error ('Ответ сети был не ок.');
             } else {
               console.log('OK!');
-              let mainBlock = document.querySelector("main");
-              mainBlock.innerHTML = `
-                <div class="admin-dashboard-wrapper">
-                  <h1>hello friend</h1>
-                  <ul>
-                    <li>
-                      Art
-                      <ul>
-                        <li>prj1</li>
-                        <li>prj2</li>
-                        <li>prj3</li>
-                      </ul>
-                    </li>
-                    <li>Photo</li>
-                    <li>Illustration</li>
-                    <li>Design</li>
-                  </ul>
-                </div>
-              `;
+              pasteHtmlTemplate();
 
             }
         } catch (error) {
