@@ -17,7 +17,7 @@ export async function pasteHtmlTemplate() {
                 <li>
                     Art
                     <form class="upload-file">
-                        <input class="file-selector" type="file" />
+                        <input class="file-selector" type="file" name="image"/>
                         <input class="upload-button" type="button"/ value="Загрузить">
                     </form>
                 <ul>
@@ -45,9 +45,10 @@ export async function pasteHtmlTemplate() {
     uploadButton.addEventListener('click', async function() {
         formData.append('username', 'abc123');
         formData.append('avatar', fileField.files[0]);
+        //const headers = new Headers({'content-type': 'multipart/form-data'});
 
         try {
-            const response = await fetch('http://localhost:3000/public/projects/art', {method: 'PUT', mode: 'cors', body: formData})
+            const response = await fetch('http://localhost:3000/public/projects/art', {method: 'POST', mode: 'cors', body: formData})
             const result = await response.json();
             console.log('Успех: ', JSON.stringify(result));
         }

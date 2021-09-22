@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "set NODE_ENV=development && webpack --mode development",
     "build": "set NODE_ENV=production && webpack --mode production",
-    "start": "webpack serve --mode development --open"
+    "client": "webpack serve --mode development --open",
+    "server": "node ./server/app.js",
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -41,9 +43,11 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
+    "concurrently": "^6.2.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1"
+    "express-fileupload": "^1.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.3"
   }
 }

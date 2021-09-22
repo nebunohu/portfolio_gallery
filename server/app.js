@@ -1,19 +1,24 @@
 const express = require('express');
+const fs = require('fs');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
+const multer = require('multer');
+const upload = multer({dest: __dirname+'/public/'});
+const uploadArt = multer({dest: __dirname+'/public/projects/art'});
 //const config = require('config');
 const app = express();
 const PORT = /*config.get('port') ||*/ 3000;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const bp = require('body-parser');
 
 /*app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));*/
 app.use(express.json({extended: true}));
 app.use(cors());
+app.use(fileUpload());
+app.use( express.static( __dirname + '/public' ) );
 
 async function start() {
-  
 
   app.get( '/', ( req, res ) => {
     res.send( 'Hello World!' )
@@ -26,8 +31,8 @@ async function start() {
 
   app.post('/auth/login', async ( req, res ) => {
     try {
-      console.log( 'POST auth!' );
-      console.log(req.body);
+      //console.log( 'POST auth!' );
+      //console.log(req.body);
       const {login, password} = req.body;
       const correctLogin = 'admin';
       const correctPassword = '123';
@@ -61,8 +66,13 @@ async function start() {
 
   app.get('/data', ( req, res ) => {
     try {
+      
+      
+      const file = fs.readFile('./server/uploads/IMG.jpg', (err, data) => {
+        if ( err ) throw err;
+        const content = data;
+      });//fs.read(__dirname+'/upload/IMG.jpg');
       console.log( 'GET data!' );
-
 
     } catch( error ) {
       res.status(500).json({ message: 'Что-то пошло не так попробуйте снова' } );
@@ -71,16 +81,26 @@ async function start() {
     
   });
 
-  app.put('/public/projects/art', (req,res) => {
-    console.log('PUT!');
-    res.json('ok');
+  app.post('/public/projects/art', uploadArt.single('image'), (req,res) => {
+    try {
+      console.log('PUT!');
+      console.log(req.files);
+      if (!req.files) {
+        return res.status(400).json({message: 'Файл не найден'})
+      }
+      //console.log(arg);
+      req.files.avatar[0].mv(__dirname+'/public/projects/art/'+req.files.avatar[0].name);
+      res.json('ok');
+    } catch(error) {
+
+    }
   });
 
   app.listen( PORT, () => {
     console.log( `App listening at http://localhost:${PORT}` )
   })
 
-  app.use( '/files', express.static( __dirname + '/public' ) );
+  
 }
 
 start();
