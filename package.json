@@ -8,7 +8,7 @@
     "dev": "set NODE_ENV=development && webpack --mode development",
     "build": "set NODE_ENV=production && webpack --mode production",
     "client": "webpack serve --mode development --open",
-    "server": "node ./server/app.js",
+    "server": "node ./node_modules/nodemon/bin/nodemon.js ./server/app.js",
     "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
@@ -33,6 +33,7 @@
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",
+    "nodemon": "^2.0.12",
     "resolve-url-loader": "^4.0.0",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",

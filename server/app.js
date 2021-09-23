@@ -1,5 +1,6 @@
 const express = require('express');
-const fs = require('fs');
+const fs = require('fs').promises;
+//import { readFile } from 'fs';
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const multer = require('multer');
@@ -64,15 +65,23 @@ async function start() {
     
   });
 
-  app.get('/data', ( req, res ) => {
+  app.get('/data', async ( req, res ) => {
+    /*function toArrayBuffer(buf) {
+      var ab = new ArrayBuffer(buf.length);
+      var view = new Uint8Array(ab);
+      for (var i = 0; i < buf.length; ++i) {
+          view[i] = buf[i];
+      }
+      return ab;
+    }*/
     try {
-      
-      
-      const file = fs.readFile('./server/uploads/IMG.jpg', (err, data) => {
-        if ( err ) throw err;
-        const content = data;
-      });//fs.read(__dirname+'/upload/IMG.jpg');
-      console.log( 'GET data!' );
+      /*const file = await fs.readFile('./server/uploads/IMG.jpg');
+      const newArrayBuffer = toArrayBuffer(file);
+      const newBlob = new Blob(newArrayBuffer, {type: 'image/jpeg'});
+      console.log( 'GET data!' );*/
+      const filePath = __dirname+'/uploads/IMG.jpg';
+      //res.download(filePath);
+      res.sendFile();
 
     } catch( error ) {
       res.status(500).json({ message: 'Что-то пошло не так попробуйте снова' } );
@@ -96,7 +105,7 @@ async function start() {
     }
   });
 
-  app.listen( PORT, () => {
+  app.listen( process.env.PORT || PORT, () => {
     console.log( `App listening at http://localhost:${PORT}` )
   })
 

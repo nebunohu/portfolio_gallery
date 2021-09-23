@@ -35,7 +35,11 @@ import {pasteHtmlTemplate} from './adminDashboard';
             } else {
               console.log('OK!');
               pasteHtmlTemplate();
-
+              body = {info: 'image'};
+              const getResponse = await fetch('http://localhost:3000/data', {method: 'GET', mode: 'cors', headers});
+              if ( !getResponse.ok ) {
+                throw new Error ('Ответ сети был не ок.');
+              }
             }
         } catch (error) {
             console.log( 'Возникла проблема с вашим fetch запросом: ', error.message);
