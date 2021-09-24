@@ -78,28 +78,28 @@ module.exports = {
             template: path.resolve(__dirname, "./client/src/index.html")
         }),
         new HtmlWebpackPlugin( {
-            filename: "art-section.html",
-            template: path.resolve(__dirname, "./client/src/art-section.html")
+            filename: "art/art-section.html",
+            template: path.resolve(__dirname, "./client/src/art/art-section.html")
         }),
         new HtmlWebpackPlugin( {
-            filename: "design-section.html",
-            template: path.resolve(__dirname, "./client/src/design-section.html")
+            filename: "design/design-section.html",
+            template: path.resolve(__dirname, "./client/src/design/design-section.html")
         }),
         new HtmlWebpackPlugin( {
-            filename: "illustration-section.html",
-            template: path.resolve(__dirname, "./client/src/illustration-section.html")
+            filename: "illustration/illustration-section.html",
+            template: path.resolve(__dirname, "./client/src/illustration/illustration-section.html")
         }),
         new HtmlWebpackPlugin( {
-            filename: "photo-section.html",
-            template: path.resolve(__dirname, "./client/src/photo-section.html")
+            filename: "photo/photo-section.html",
+            template: path.resolve(__dirname, "./client/src/photo/photo-section.html")
         }),
         new HtmlWebpackPlugin( {
-            filename: "tarot-project.html",
-            template: path.resolve(__dirname, "./client/src/tarot-project.html")
+            filename: "art/projects/tarot-project.html",
+            template: path.resolve(__dirname, "./client/src/art/projects/tarot-project.html")
         }),
         new HtmlWebpackPlugin( {
-            filename: "admin.html",
-            template: path.resolve(__dirname, "./client/src/admin.html")
+            filename: "admin/admin.html",
+            template: path.resolve(__dirname, "./client/src/admin/admin.html")
         }),
     ],
     devServer: {
