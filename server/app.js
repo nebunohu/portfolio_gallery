@@ -17,7 +17,7 @@ app.use(bp.urlencoded({ extended: true }));*/
 app.use(express.json({extended: true}));
 app.use(cors());
 app.use(fileUpload());
-app.use( express.static( __dirname + '/public' ) );
+app.use( '/static', express.static( __dirname + '/public' ) );
 
 async function start() {
 
@@ -65,10 +65,10 @@ async function start() {
     
   });
 
-  app.get('/data', async ( req, res ) => {
-    /*function toArrayBuffer(buf) {
-      var ab = new ArrayBuffer(buf.length);
-      var view = new Uint8Array(ab);
+  app.get('/static', async ( req, res ) => {
+    /*function toArrayBuffer(buf) {*/
+      console.log('GET!');
+      /*var view = new Uint8Array(ab);
       for (var i = 0; i < buf.length; ++i) {
           view[i] = buf[i];
       }
@@ -79,9 +79,9 @@ async function start() {
       const newArrayBuffer = toArrayBuffer(file);
       const newBlob = new Blob(newArrayBuffer, {type: 'image/jpeg'});
       console.log( 'GET data!' );*/
-      const filePath = __dirname+'/uploads/IMG.jpg';
+      //const filePath = __dirname+'/uploads/IMG.jpg';
       //res.download(filePath);
-      res.sendFile();
+      //res.sendFile();
 
     } catch( error ) {
       res.status(500).json({ message: 'Что-то пошло не так попробуйте снова' } );
