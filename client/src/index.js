@@ -20,10 +20,9 @@ import {pasteHtmlTemplate} from './adminDashboard';
     }
 
     async function loginHandler(event) {
+        event.preventDefault();
         const login = this[0].value;
         const password = this[1].value;
-
-        event.preventDefault();
 
         try {
             let body = {login: login, password: password};
@@ -33,12 +32,13 @@ import {pasteHtmlTemplate} from './adminDashboard';
             if ( !response.ok ) {
               throw new Error ('Ответ сети был не ок.');
             } else {
-              console.log('OK!');
               pasteHtmlTemplate();
               body = {info: 'image'};
-              const getResponse = await fetch('http://localhost:3000/data', {method: 'GET', mode: 'cors', headers});
-              if ( !getResponse.ok ) {
+              const getMethodResponse = await fetch('http://localhost:3000/static/img.jpg', {method: 'GET', mode: 'cors', headers});
+              if ( !getMethodResponse.ok ) {
                 throw new Error ('Ответ сети был не ок.');
+              } else {
+                console.log('OK!');
               }
             }
         } catch (error) {
