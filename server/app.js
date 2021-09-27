@@ -1,11 +1,12 @@
 const express = require('express');
 const fs = require('fs').promises;
+const path = require('path');
 //import { readFile } from 'fs';
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const multer = require('multer');
-const upload = multer({dest: __dirname+'/public/'});
-const uploadArt = multer({dest: __dirname+'/public/projects/art'});
+const upload = multer({dest: path.resolve(__dirname, 'public')});
+const uploadArt = multer({dest: path.resolve(__dirname, './public/projects/art')});
 //const config = require('config');
 const app = express();
 const PORT = /*config.get('port') ||*/ 3000;
@@ -17,7 +18,7 @@ app.use(bp.urlencoded({ extended: true }));*/
 app.use(express.json({extended: true}));
 app.use(cors());
 app.use(fileUpload());
-app.use( '/static', express.static( __dirname + '/public' ) );
+app.use( '/static', express.static( path.resolve(__dirname, 'public') ) );
 
 async function start() {
 
@@ -65,16 +66,16 @@ async function start() {
     
   });
 
-  app.get('/static', async ( req, res ) => {
+  //app.get('/static', async ( req, res ) => {
     /*function toArrayBuffer(buf) {*/
-      console.log('GET!');
+  //    console.log('GET!');
       /*var view = new Uint8Array(ab);
       for (var i = 0; i < buf.length; ++i) {
           view[i] = buf[i];
       }
       return ab;
     }*/
-    try {
+  //  try {
       /*const file = await fs.readFile('./server/uploads/IMG.jpg');
       const newArrayBuffer = toArrayBuffer(file);
       const newBlob = new Blob(newArrayBuffer, {type: 'image/jpeg'});
@@ -83,12 +84,12 @@ async function start() {
       //res.download(filePath);
       //res.sendFile();
 
-    } catch( error ) {
-      res.status(500).json({ message: 'Что-то пошло не так попробуйте снова' } );
-      console.log( error.message );
-    }
+  //  } catch( error ) {
+  //    res.status(500).json({ message: 'Что-то пошло не так попробуйте снова' } );
+  //    console.log( error.message );
+  //  }
     
-  });
+  //});
 
   app.post('/public/projects/art', uploadArt.single('image'), (req,res) => {
     try {
@@ -98,7 +99,7 @@ async function start() {
         return res.status(400).json({message: 'Файл не найден'})
       }
       //console.log(arg);
-      req.files.avatar[0].mv(__dirname+'/public/projects/art/'+req.files.avatar[0].name);
+      req.files.avatar[0].mv(path.resolve(__dirname, './public/projects/art/'+req.files.avatar[0].name));
       res.json('ok');
     } catch(error) {
 

@@ -36,6 +36,7 @@ export async function pasteHtmlTemplate() {
                 <li>Illustration</li>
                 <li>Design</li>
             </ul>
+            <img src="" alt="">
             </div>`
             );
     const uploadButton = document.querySelector('.upload-button');

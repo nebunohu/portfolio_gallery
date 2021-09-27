@@ -34,13 +34,17 @@ import {pasteHtmlTemplate} from './adminDashboard';
             } else {
               pasteHtmlTemplate();
               body = {info: 'image'};
-              const getMethodResponse = await fetch('http://localhost:3000/static/img.jpg', {method: 'GET', mode: 'cors', headers});
+              const getMethodResponse = await fetch('http://localhost:3000/static/img.jpg', {method: 'GET', mode: 'cors', headers})
+                .then(getMethodResponse => getMethodResponse.blob())
+                .then(function(myBlob) {
+                  let objectURL = URL.createObjectURL(myBlob);
+                  const myImage = document.querySelector('img');
+                  myImage.src = objectURL;
+                });
               if ( !getMethodResponse.ok ) {
                 throw new Error ('Ответ сети был не ок.');
-              } else {
-                console.log('OK!');
-              }
             }
+          }
         } catch (error) {
             console.log( 'Возникла проблема с вашим fetch запросом: ', error.message);
         }
