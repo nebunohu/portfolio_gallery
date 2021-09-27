@@ -105,12 +105,10 @@ async function start() {
 
     }
   });
-
-  app.listen( process.env.PORT || PORT, () => {
-    console.log( `App listening at http://localhost:${PORT}` )
-  })
-
-  
 }
 
 start();
+
+app.listen( process.env.PORT || PORT, () => {
+    console.log( `App listening at http://localhost:${PORT}` )
+  })
