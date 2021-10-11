@@ -12,6 +12,8 @@ const app = express();
 const PORT = /*config.get('port') ||*/ 3000;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+const {Schema} = mongoose;
 
 /*app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));*/
@@ -19,6 +21,26 @@ app.use(express.json({extended: true}));
 app.use(cors());
 app.use(fileUpload());
 app.use( '/static', express.static( path.resolve(__dirname, 'public') ) );
+
+// Установим подключение по умолчанию
+const mongoDB = 'mongodb://127.0.0.1/my_database';
+mongoose.connect(mongoDB);
+// Позволим Mongoose использовать глобальную библиотеку промисов
+mongoose.Promise = global.Promise;
+// Получение подключения по умолчанию
+let db = mongoose.connection;
+
+// Привязать подключение к событию ошибки  (получать сообщения об ошибках подключения)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+const dbSchema = new Schema({
+  chapter: String,
+  project: String,
+  directory: String,
+  content: Buffer
+});
+
+const dbModel = mongoose.model('dbModel', dbSchema);
 
 async function start() {
 

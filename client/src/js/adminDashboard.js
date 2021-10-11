@@ -1,3 +1,4 @@
+//import {APP} from './App';
 export async function pasteHtmlTemplate() {
     /*const headers = new Headers();
     const init = {
