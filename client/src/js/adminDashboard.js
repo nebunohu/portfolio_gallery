@@ -1,6 +1,6 @@
 //import {APP} from './App';
 export async function pasteHtmlTemplate() {
-    /*const headers = new Headers();
+  /*const headers = new Headers();
     const init = {
         method: 'GET',
         headers: headers,
@@ -9,10 +9,11 @@ export async function pasteHtmlTemplate() {
     };
     const request = new Request('http://localhost:3000/data', init);
     const response = await fetch(request)*/
-    let mainBlock = document.querySelector("main");
-        mainBlock.innerHTML = '';
-        mainBlock.insertAdjacentHTML('afterbegin', 
-            `<div class="admin-dashboard-wrapper">
+  let mainBlock = document.querySelector("main");
+  mainBlock.innerHTML = "";
+  mainBlock.insertAdjacentHTML(
+    "afterbegin",
+    `<div class="admin-dashboard-wrapper">
             <h1>hello friend</h1>
             <ul>
                 <li>
@@ -39,25 +40,26 @@ export async function pasteHtmlTemplate() {
             </ul>
             <img src="" alt="">
             </div>`
-            );
-    const uploadButton = document.querySelector('.upload-button');
-    const formData = new FormData();
-    const fileField = document.querySelector('input[type="file"]');
-    
-    uploadButton.addEventListener('click', async function() {
-        formData.append('username', 'abc123');
-        formData.append('avatar', fileField.files[0]);
-        //const headers = new Headers({'content-type': 'multipart/form-data'});
+  );
+  const uploadButton = document.querySelector(".upload-button");
+  const formData = new FormData();
+  const fileField = document.querySelector('input[type="file"]');
 
-        try {
-            const response = await fetch('http://localhost:3000/public/projects/art', {method: 'POST', mode: 'cors', body: formData})
-            const result = await response.json();
-            console.log('Успех: ', JSON.stringify(result));
-        }
-        catch ( error ) {
-            console.log('Ошибка:', error);
-        }
+  uploadButton.addEventListener("click", async function () {
+    formData.append("username", "abc123");
+    formData.append("avatar", fileField.files[0]);
+    //const headers = new Headers({'content-type': 'multipart/form-data'});
 
-    });
-    
+    try {
+			//Отправка изображения на сервер по адресу http://localhost:3000/public/projects/art
+      const response = await fetch(
+        "http://localhost:3000/public/projects/art",
+        { method: "POST", mode: "cors", body: formData }
+      );
+      const result = await response.json();
+      console.log("Успех: ", JSON.stringify(result));
+    } catch (error) {
+      console.log("Ошибка:", error);
+    }
+  });
 }

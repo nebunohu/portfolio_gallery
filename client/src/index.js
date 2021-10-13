@@ -1,3 +1,4 @@
+"use strict";
 import './style.scss';
 import './images/eye.png';
 import './images/eye2.png';
