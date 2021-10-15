@@ -46,8 +46,8 @@ APP.loginHandler = async function (event) {
     } else {
       pasteHtmlTemplate();
       // Получение изображения с сервера по адресу http://localhost:3000/static/img.jpg
-      body = { info: "image" };
-      /*const getMethodResponse = await fetch(
+      /*body = { info: "image" };
+      const getMethodResponse = await fetch(
         "http://localhost:3000/static/img.jpg",
         { method: "GET", mode: "cors", headers }
       )

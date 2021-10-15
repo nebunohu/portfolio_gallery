@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class AdminComponent extends Component {
+class LoginForm extends Component {
   render() {
     return (
       <div>
@@ -12,10 +12,19 @@ class AdminComponent extends Component {
           <input className="login-form-wrapper__submit-button" type="submit" value="Sign in" />
         </form>
       </div>
-      
+    );
+  }
+}
 
-    )
+class AdminComponent extends Component {
+  render() {
+    return (
+      <LoginForm />
+    );
   }
 };
 
+
+
 export default AdminComponent;
+//export default AdminDashboard;

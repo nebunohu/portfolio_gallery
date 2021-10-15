@@ -1,4 +1,42 @@
-//import {APP} from './App';
+import React, {Component} from "react";
+import ReactDOM from "react-dom";
+//import AdmminDashboard from "../admin/admin";
+
+class AdminDashboard extends Component {
+  render () {
+    return (
+      <div className="admin-dashboard-wrapper">
+              <h1>Панель администрирования</h1>
+              <ul>
+                  <li>
+                      Art
+                      <form className="upload-file">
+                          <input className="file-selector" type="file" name="avatar"/>
+                          <input className="upload-button" type="button" value="Загрузить"/>
+                      </form>
+                  <ul>
+                      <li>prj1</li>
+                      <li>prj2</li>
+                      <li>prj3</li>
+                  </ul>
+                  </li>
+                  <li>Photo
+                      <ul>
+                      <li>prj1</li>
+                      <li>prj2</li>
+                      <li>prj3</li>
+              </ul>
+                  </li>
+                  <li>Illustration</li>
+                  <li>Design</li>
+              </ul>
+              <img src="" alt="" />
+              </div>
+    
+    );
+  }
+};
+
 export async function pasteHtmlTemplate() {
   /*const headers = new Headers();
     const init = {
@@ -9,38 +47,10 @@ export async function pasteHtmlTemplate() {
     };
     const request = new Request('http://localhost:3000/data', init);
     const response = await fetch(request)*/
-  let mainBlock = document.querySelector("main");
-  mainBlock.innerHTML = "";
-  mainBlock.insertAdjacentHTML(
-    "afterbegin",
-    `<div class="admin-dashboard-wrapper">
-            <h1>hello friend</h1>
-            <ul>
-                <li>
-                    Art
-                    <form class="upload-file">
-                        <input class="file-selector" type="file" name="avatar"/>
-                        <input class="upload-button" type="button"/ value="Загрузить">
-                    </form>
-                <ul>
-                    <li>prj1</li>
-                    <li>prj2</li>
-                    <li>prj3</li>
-                </ul>
-                </li>
-                <li>Photo
-                    <ul>
-                    <li>prj1</li>
-                    <li>prj2</li>
-                    <li>prj3</li>
-            </ul>
-                </li>
-                <li>Illustration</li>
-                <li>Design</li>
-            </ul>
-            <img src="" alt="">
-            </div>`
-  );
+  let rootElement = document.getElementById("root");
+  ReactDOM.unmountComponentAtNode(rootElement);
+  ReactDOM.render(<AdminDashboard />, document.querySelector("#root"));
+    
   const uploadButton = document.querySelector(".upload-button");
   const formData = new FormData();
   const fileField = document.querySelector('input[type="file"]');
