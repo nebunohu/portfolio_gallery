@@ -1,8 +1,15 @@
 "use strict";
 import { pasteHtmlTemplate } from "./adminDashboard";
 import ReactDOM from "react-dom";
-import React, {Component} from "react";
+import React from "react";
 import AdminComponent from "../admin/admin";
+import AppHeader from "../components/app-header/app-header.jsx";
+import Intro from "../components/intro/intro.jsx";
+import Sections from "../components/sections/sections.jsx";
+import Cv from "../components/cv/cv.jsx";
+import Info from "../components/info/info.jsx";
+import Up from "../components/up/up.jsx";
+import AppFooter from "../components/app-footer/app-footer.jsx";
 
 export let APP = {} || APP;
 
@@ -10,7 +17,8 @@ APP.start = function () {
   let upButton = document.querySelector(".up") || null;  
 
   if (window.location.pathname === "/") {
-    upButton.addEventListener("click", APP.backToTop);
+    APP.render();
+    //upButton.addEventListener("click", APP.backToTop);
   } else if (window.location.pathname === "/admin/admin.html") {
     ReactDOM.render(<AdminComponent />, document.querySelector('#root'));
     let loginForm = document.querySelector(".login-form-wrapper") || null;
@@ -66,3 +74,25 @@ APP.loginHandler = async function (event) {
     console.log("Возникла проблема с вашим fetch запросом: ", error.message);
   }
 };
+
+function AppComponent() {
+  
+
+  return (
+    <>
+      <AppHeader />
+      <main>
+        <Intro />
+        <Sections />
+        <Cv />
+        <Info />
+        <Up />
+      </main>
+      <AppFooter />
+    </>
+  );
+}
+
+APP.render = () => {
+  ReactDOM.render(<AppComponent />, document.getElementById('root'));
+}
