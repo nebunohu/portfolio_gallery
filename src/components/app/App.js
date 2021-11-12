@@ -8,14 +8,38 @@ import {
 } from "react-router-dom";
 import AdminComponent from "../admin/admin";
 import AppHeader from "../app-header/app-header.jsx";
-import Intro from "../intro/intro.jsx";
-import Sections from "../sections/sections.jsx";
-import Cv from "../cv/cv.jsx";
-import Info from "../info/info.jsx";
-import Up from "../up/up.jsx";
+import MainPage from "../main-page/main-page";
 import AppFooter from "../app-footer/app-footer.jsx";
+import ArtSection from "../art-section/art-section";
 
+// Styles
 import './style.scss';
+
+function App() {
+  const [state, setState] = React.useState({isAdminPage: false})
+
+  React.useEffect(() => {
+    if (window.location.pathname === "/admin") setState({...state, isAdminPage: true});
+    else setState({...state, isAdminPage: false});
+  }, [])
+
+  return (
+    
+    <Router>
+      {!state.isAdminPage && (<AppHeader />)}
+      <main>
+        <Switch>
+          <Route exact path='/' component={MainPage} />
+          <Route path='/art' component={ArtSection} />
+          <Route path='/admin' component={AdminComponent} />
+        </Switch>
+      </main>
+      <AppFooter />
+    </Router>
+  );
+}
+
+export default App;
 //import { AdminDashboard } from "./adminDashboard.jsx";
 
 //export let APP = {} || APP;
@@ -82,34 +106,4 @@ APP.backToTop = function () {
   }
 };*/
 
-function App() {
-  
 
-  return (
-    
-    <Router>
-      <div>
-      <AppHeader />
-      <main>
-        <Switch>
-          <Route exact path='/'>
-            <Intro />
-            <Sections />
-            <Cv />
-            <Info />
-            <Up />
-          </Route>
-          <Route path='/admin'>
-            <AdminComponent />
-          </Route>
-        </Switch>
-        
-        
-      </main>
-      <AppFooter />
-      </div>
-    </Router>
-  );
-}
-
-export default App;
