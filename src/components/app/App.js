@@ -1,26 +1,26 @@
-"use strict";
 //import { pasteHtmlTemplate } from "./adminDashboard.jsx";
-import ReactDOM from "react-dom";
 import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  //Link
 } from "react-router-dom";
 import AdminComponent from "../admin/admin";
-import AppHeader from "../components/app-header/app-header.jsx";
-import Intro from "../components/intro/intro.jsx";
-import Sections from "../components/sections/sections.jsx";
-import Cv from "../components/cv/cv.jsx";
-import Info from "../components/info/info.jsx";
-import Up from "../components/up/up.jsx";
-import AppFooter from "../components/app-footer/app-footer.jsx";
-import { AdminDashboard } from "./adminDashboard.jsx";
+import AppHeader from "../app-header/app-header.jsx";
+import Intro from "../intro/intro.jsx";
+import Sections from "../sections/sections.jsx";
+import Cv from "../cv/cv.jsx";
+import Info from "../info/info.jsx";
+import Up from "../up/up.jsx";
+import AppFooter from "../app-footer/app-footer.jsx";
 
-export let APP = {} || APP;
+import './style.scss';
+//import { AdminDashboard } from "./adminDashboard.jsx";
 
-APP.start = function () {
+//export let APP = {} || APP;
+
+/*APP.start = function () {
   let upButton = document.querySelector(".up") || null;  
 
   if (window.location.pathname === "/") {
@@ -38,9 +38,9 @@ APP.backToTop = function () {
     window.scrollBy(0, -30);
     setTimeout(APP.backToTop, 0);
   }
-};
+};*/
 
-APP.loginHandler = async function (event) {
+/*APP.loginHandler = async function (event) {
   event.preventDefault();
   const login = this[0].value;
   const password = this[1].value;
@@ -59,7 +59,7 @@ APP.loginHandler = async function (event) {
     if (!response.ok) {
       throw new Error("Ответ сети был не ок.");
     } else {
-      pasteHtmlTemplate();
+      pasteHtmlTemplate();*/
       // Получение изображения с сервера по адресу http://localhost:3000/static/img.jpg
       /*body = { info: "image" };
       const getMethodResponse = await fetch(
@@ -75,14 +75,14 @@ APP.loginHandler = async function (event) {
       if (!getMethodResponse.ok) {
         throw new Error("Ответ сети был не ок.");
       }*/
-    }
+/*    }
     
   } catch (error) {
     console.log("Возникла проблема с вашим fetch запросом: ", error.message);
   }
-};
+};*/
 
-function AppComponent() {
+function App() {
   
 
   return (
@@ -100,7 +100,7 @@ function AppComponent() {
             <Up />
           </Route>
           <Route path='/admin'>
-            <AdminDashboard />
+            <AdminComponent />
           </Route>
         </Switch>
         
@@ -112,6 +112,4 @@ function AppComponent() {
   );
 }
 
-APP.render = () => {
-  ReactDOM.render(<AppComponent />, document.getElementById('root'));
-}
+export default App;
