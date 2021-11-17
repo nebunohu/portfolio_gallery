@@ -1,6 +1,6 @@
 import React from "react";
 
-function LoginForm() {
+function LoginForm(props) {
   const loginHandler = async function (event) {
     event.preventDefault();
     const login = event.target[0].value;
@@ -11,7 +11,7 @@ function LoginForm() {
       let body = { login: login, password: password };
       body = JSON.stringify(body);
       let headers = new Headers({ "content-type": "application/json" });
-      const response = await fetch("http://localhost:3000/auth/login", {
+      const response = await fetch("http://localhost:3001/auth/login", {
         method: "POST",
         body,
         mode: "cors",
@@ -20,6 +20,7 @@ function LoginForm() {
       if (!response.ok) {
         throw new Error("Ответ сети был не ок.");
       } else {
+        props.loginFlagSetter(true);
         //pasteHtmlTemplate();
         // Получение изображения с сервера по адресу http://localhost:3000/static/img.jpg
         /*body = { info: "image" };
@@ -60,12 +61,10 @@ function LoginForm() {
 class AdminComponent extends React.Component {
   render() {
     return (
-      <LoginForm />
+      <LoginForm loginFlagSetter={this.props.loginFlagSetter} />
     );
   }
 };
-
-
 
 export default AdminComponent;
 //export default AdminDashboard;

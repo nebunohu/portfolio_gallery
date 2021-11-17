@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Cv() {
   return (
-    <section className="cv">
+    <section className="cv" id="about">
       <div className="cv__introduce-wrapper">
         <div className="cv__introduce-left">
           see me here

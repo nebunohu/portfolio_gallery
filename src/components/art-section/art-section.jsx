@@ -1,48 +1,58 @@
 import React from "react";
+import { 
+	Link,
+	useRouteMatch,
+ } from 'react-router-dom';
 
 // Images
 
-import tarotImg from '../../images/tarot.png';
-import psychosomasysImg from '../../images/psychosomasys.png';
-import devkaImg from '../../images/devka-bez-ruki.png';
-import mudrostImg from '../../images/mudrost.png';
 
 export default function ArtSection() {
+	const [data, setData] = React.useState([]);
+	let match = useRouteMatch();
+	
+	React.useEffect(() => {
+		const getData = async () => {
+			try {
+				const res = await fetch('http://localhost:3001/static/art/data.json');
+				if(res.ok) {
+					const data = await res.json();
+					setData(data.data);
+				}	else {
+					throw new Error('Fetch error - Status not OK');
+				}
+			} catch {
+				console.log(Error.message);
+			}
+			
+
+		}
+
+		getData();
+	}, []);
+
+	function onClickHandler(item) {
+		
+	}
+
   return (
     <>
       <img className="bg-eye" src="../images/eye2.png" alt="" />
       <section className="projects">
-          <div className="projects__item" >
-              <a href="./projects/tarot-project.html">
-                  <div className="projects__name">neural tarot</div>
-                  <div className="projects__year">2021</div>
-                  <img className="projects__image" src={tarotImg} alt="" />
-              </a>
-          </div>
-          <div className="projects__item" href="">
-              <a href="">
-                  <div className="projects__name">psychosomasys</div>
-                  <div className="projects__year">2021</div>
-                  <img className="projects__image" src={psychosomasysImg} alt="" />
-              </a>
-          </div>
-          <div className="projects__item" href="">
-              <a href="">
-                  <div className="projects__name">devka bez ruki</div>
-                  <div className="projects__year">2018</div>
-                  <img className="projects__image" src={devkaImg} alt="" />
-              
-              </a>
-          </div>
-          <div className="projects__item" href="">
-              <a href="">
-                  <div className="projects__name">mudrost'</div>
-                  <div className="projects__year">2016</div>
-                  <img className="projects__image" src={mudrostImg} alt="" />
-              
-              </a>
-          </div>
-    </section>
+				{
+					data.map((el, index) => {
+						return (
+							<div className="projects__item" onClick={onClickHandler(el)} key={index}>
+								<Link to={`${match.url}/${el.url}`}>
+										<div className="projects__name">{el.name}</div>
+										<div className="projects__year">{el.year}</div>
+										<img className="projects__image" src={el.src} alt="" />
+								</Link>
+							</div>
+						);
+					})
+				}
+    	</section>
     </>
   );
 }

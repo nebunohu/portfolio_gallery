@@ -3,7 +3,7 @@ import phoneImage from '../../images/phone.png';
 
 export default function Info() {
   return (
-    <section className="info">
+    <section className="info" id="contacts">
         <div className="info__header">
             
             let’s  collaborate

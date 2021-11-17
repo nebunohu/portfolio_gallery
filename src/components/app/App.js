@@ -4,24 +4,33 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
   //Link
 } from "react-router-dom";
+
+// Components
 import AdminComponent from "../admin/admin";
+import { AdminDashboard } from "../admin-dashboard-wrapper/adminDashboard";
 import AppHeader from "../app-header/app-header.jsx";
 import MainPage from "../main-page/main-page";
 import AppFooter from "../app-footer/app-footer.jsx";
 import ArtSection from "../art-section/art-section";
+import Project from "../project/project";
+
 
 // Styles
 import './style.scss';
 
 function App() {
-  const [state, setState] = React.useState({isAdminPage: false})
+  const [state, setState] = React.useState({isAdminPage: false});
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   React.useEffect(() => {
-    if (window.location.pathname === "/admin") setState({...state, isAdminPage: true});
+    if (window.location.pathname.match(/\/admin/i)) setState({...state, isAdminPage: true});
     else setState({...state, isAdminPage: false});
   }, []);
+
+  //let match = useRouteMatch();
 
   return (
     
@@ -30,8 +39,22 @@ function App() {
       <main>
         <Switch>
           <Route exact path='/' component={MainPage} />
-          <Route path='/art' component={ArtSection} />
-          <Route path='/admin' component={AdminComponent} />
+          <Route exact path='/art' component={ArtSection} />
+          <Route path={`/art/:projectId`} component={Project} />
+          <Route exact path='/photo' component={ArtSection} />
+          <Route path={`/photo/:projectId`} component={Project} />
+          <Route exact path='/illustration' component={ArtSection} />
+          <Route path={`/illustration/:projectId`} component={Project} />
+          <Route exact path='/design' component={ArtSection} />
+          <Route path={`/design/:projectId`} component={Project} />
+          <Route exact path='/admin'>
+            {isLoggedIn ? <Redirect to='/admin/dashboard' /> : <AdminComponent isLoggedIn={isLoggedIn} loginFlagSetter={setIsLoggedIn}/>}
+          </Route>
+          <Route exact path='/admin/dashboard'>
+            {!isLoggedIn && (<h1>Please login!</h1>)}
+            {isLoggedIn && <AdminDashboard />}
+          </Route>
+          
         </Switch>
       </main>
       <AppFooter />
