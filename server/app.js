@@ -1,5 +1,5 @@
 const express = require('express');
-const fs = require('fs').promises;
+const fs = require('fs');//.promises;
 const path = require('path');
 //import { readFile } from 'fs';
 const cors = require('cors');
@@ -45,8 +45,7 @@ const dbModel = mongoose.model('dbModel', dbSchema);
 async function start() {
 
   app.get( '/', ( req, res ) => {
-    res.send( 'Hello World!' )
-    console.log( 'GET catched!!!' );
+    res.send( 'Server is working!' )
   })
 
   app.post( '/', ( req, res ) => {
@@ -113,7 +112,7 @@ async function start() {
     
   //});
 
-  app.post('/public/projects/art', uploadArt.single('image'), (req,res) => {
+  app.post('/public/projects/art', uploadArt.single('image'), async (req,res) => {
     try {
       console.log('PUT!');
       console.log(req.files);
@@ -121,8 +120,41 @@ async function start() {
         return res.status(400).json({message: 'Файл не найден'})
       }
       //console.log(arg);
-      req.files.avatar[0].mv(path.resolve(__dirname, './public/projects/art/'+req.files.avatar[0].name));
-      res.json('ok');
+      if(req.files.hasOwnProperty('image')) {
+        req.files.image.mv(path.resolve(__dirname, './public/art/'+req.files.image.name));
+        res.json('Файл загружен!');
+        
+        fs.readFile(path.resolve(__dirname, './public/art/data.json'), 'utf8', async function (error, data) {
+          let jsonDataFile = JSON.parse(data);
+          const newData = {
+            "name":"name",
+            "year":"2021",
+            "url":"url",
+            "cover":{
+              "src":"http://localhost:3001/static/art/"+req.files.image.name,
+            },
+            "content":{
+              "description":"",
+              "items":[
+                {
+                  "type":"text/image/video",
+                  "src":"",
+                  "value":""
+                }
+              ]
+            }
+          };
+          console.log(jsonDataFile.data);
+          jsonDataFile.data.splice(0, 0, newData);
+          jsonDataFile = JSON.stringify(jsonDataFile);
+          fs.writeFile(path.resolve(__dirname, './public/art/data.json'), jsonDataFile, function (error) {
+            if(error) throw error;
+            console.log('Запись фйла завершена');
+          });
+        });
+        //
+        //await 
+      }
     } catch(error) {
 
     }

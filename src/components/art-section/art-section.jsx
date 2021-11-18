@@ -6,15 +6,18 @@ import {
 
 // Images
 
+// Utils
+import { SERVER_URL } from '../../utils/config';
+
 
 export default function ArtSection() {
 	const [data, setData] = React.useState([]);
-	let match = useRouteMatch();
+	const match = useRouteMatch();
 	
 	React.useEffect(() => {
 		const getData = async () => {
 			try {
-				const res = await fetch('http://localhost:3001/static/art/data.json');
+				const res = await fetch(`${SERVER_URL}/static/art/data.json`);
 				if(res.ok) {
 					const data = await res.json();
 					setData(data.data);
@@ -24,8 +27,6 @@ export default function ArtSection() {
 			} catch {
 				console.log(Error.message);
 			}
-			
-
 		}
 
 		getData();
@@ -46,7 +47,7 @@ export default function ArtSection() {
 								<Link to={`${match.url}/${el.url}`}>
 										<div className="projects__name">{el.name}</div>
 										<div className="projects__year">{el.year}</div>
-										<img className="projects__image" src={el.src} alt="" />
+										<img className="projects__image" src={el.cover.src} alt="" />
 								</Link>
 							</div>
 						);
