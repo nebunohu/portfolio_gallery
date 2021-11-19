@@ -10,13 +10,12 @@ import {
 
 // Components
 import AdminComponent from "../admin/admin";
-import { AdminDashboard } from "../admin-dashboard-wrapper/adminDashboard";
+import AdminDashboardWrapper from "../admin-dashboard-wrapper/admin-dashboard-wrapper";
 import AppHeader from "../app-header/app-header.jsx";
 import MainPage from "../main-page/main-page";
 import AppFooter from "../app-footer/app-footer.jsx";
 import ArtSection from "../art-section/art-section";
 import Project from "../project/project";
-
 
 // Styles
 import './style.scss';
@@ -30,12 +29,13 @@ function App() {
     else setState({...state, isAdminPage: false});
   }, []);
 
-  //let match = useRouteMatch();
+
 
   return (
     
     <Router>
       {!state.isAdminPage && (<AppHeader />)}
+      {state.isAdminPage && isLoggedIn && <header><h1>Панель управления</h1></header>}
       <main>
         <Switch>
           <Route exact path='/' component={MainPage} />
@@ -50,9 +50,9 @@ function App() {
           <Route exact path='/admin'>
             {isLoggedIn ? <Redirect to='/admin/dashboard' /> : <AdminComponent isLoggedIn={isLoggedIn} loginFlagSetter={setIsLoggedIn}/>}
           </Route>
-          <Route exact path='/admin/dashboard'>
+          <Route path='/admin/dashboard'>
             {!isLoggedIn && (<h1>Please login!</h1>)}
-            {isLoggedIn && <AdminDashboard />}
+            {isLoggedIn && <AdminDashboardWrapper />}
           </Route>
           
         </Switch>

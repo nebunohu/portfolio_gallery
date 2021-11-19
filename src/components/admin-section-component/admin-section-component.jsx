@@ -5,27 +5,43 @@ import {
 } from "react-router-dom";
 
 // Components
-import UploadProjectComponent from "../upload-project-component/upload-project-component";
+
 
 export default function AdminSectionComponent(props) {
+  const [isProjectEditorOpen, setIsProjectEditorOpen] = React.useState(false);
+  const [currentProject, setCurrentProject] = React.useState('');
   const match = useRouteMatch();
 
+  const onProjectNameClickHandler = (e) => {
+    setIsProjectEditorOpen(true);
+    setCurrentProject(e.target.textContent);
+  }
+
+  const closeModal = () => {
+    setIsProjectEditorOpen(false);
+  }
+
   return (
-    <li>
-          {props.sectionTitle}
-          
-      {!!props.data && 
-        <ul>
-          {props.data.map((el, index) => {
+    <>
+      <h2>{props.sectionTitle}</h2>
+      <ul>
+        {!!props.data &&
+          props.data.map((el, index) => {
             return (
-              <li key={index}>
+              <li key={index} onClick={props.setIsEdit}>
+                {/*<Link to={`${match.url}/${el.url}`}>{el.name}</Link>*/}
                 <Link to={`${match.url}/${el.url}`}>{el.name}</Link>
               </li>
             );
-          })}
-        </ul>
-      }
-      <UploadProjectComponent />
-    </li>
+          })
+        }
+        <li>
+          <Link to={`${match.url}/upload`}>
+            <input type="button" value="Загрузить новый проект" onClick={props.setIsUpload} />
+          </Link>
+        </li>
+      </ul>
+      {/*isProjectEditorOpen && <EditProjectPageModal closeModal={closeModal} projectName={currentProject} />*/}
+    </>
   );
 }

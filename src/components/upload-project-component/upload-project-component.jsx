@@ -1,12 +1,14 @@
 import React from 'react';
+
+// Components
+
+// Utils
 import { SERVER_URL } from '../../utils/config';
 
-export default function UploadProjectComponent() {
-  const [isUploadAllowed, setIsUploadAllowed] = React.useState(false);
+// Styles
+import upldPrjComponentStyles from './upload-project-component.module.scss';
 
-  function uploadPrjBtnHandler(e) {
-    setIsUploadAllowed(!isUploadAllowed);
-  }
+export default function UploadProjectComponent(props) {
 
   function submitHandler(e) {
     e.preventDefault();
@@ -36,25 +38,20 @@ export default function UploadProjectComponent() {
 
   return (
     <>
-      {!isUploadAllowed && <input type="button" value="Загрузить новый проект" onClick={uploadPrjBtnHandler}/>}
-      {isUploadAllowed && 
-        <div className="uploadWrapper">
-          <form className="upload-file" onSubmit={submitHandler}>
-            <label htmlFor="name" >Введите название проекта
-            <input className="file-selector" type="text" name="name"/></label>
-            <label htmlFor="url" >Введите название проекта
-            <input className="file-selector" type="text" name="url"/></label>
-            <label htmlFor="cover" >Загрузите обложку
-            <input className="file-selector" type="file" name="cover"/></label>
-            <label htmlFor="year" >Введите год создания проекта
-            <input className="file-selector" type="text" name="year"/></label>
-            <label htmlFor="description" >Введите описание проекта
-            <input className="file-selector" type="text-area" name="description"/></label>
-            <input className="upload-button" type="submit" value="Загрузить"/>
-          </form>
-          <input type="button" value="Отменить загрузку" onClick={uploadPrjBtnHandler}/>
-        </div>
-      }
+      <h2 className={`${upldPrjComponentStyles.title}`}>Загрузить новый проект в раздел {props.sectionTitle}</h2>
+      <form className={`${upldPrjComponentStyles.uploadForm}`} onSubmit={submitHandler}>
+        <label className={`${upldPrjComponentStyles.label}`} htmlFor="name" >Введите название проекта:
+        <input className={`${upldPrjComponentStyles.input}`} type="text" name="name"/></label>
+        <label className={`${upldPrjComponentStyles.label}`} htmlFor="url" >Введите название проекта:
+        <input className={`${upldPrjComponentStyles.input}`} type="text" name="url"/></label>
+        <label className={`${upldPrjComponentStyles.label}`} htmlFor="cover" >Загрузите обложку:
+        <input className={`${upldPrjComponentStyles.input}`} type="file" name="cover"/></label>
+        <label className={`${upldPrjComponentStyles.label}`} htmlFor="year" >Введите год создания проекта:
+        <input className={`${upldPrjComponentStyles.input}`} type="text" name="year"/></label>
+        <label className={`${upldPrjComponentStyles.label}`} htmlFor="description" >Введите описание проекта:
+        <input className={`${upldPrjComponentStyles.input}`} type="text-area" name="description"/></label>
+        <input className={`${upldPrjComponentStyles.uploadButton}`} type="submit" value="Загрузить"/>
+      </form>
     </>
   );
 }
