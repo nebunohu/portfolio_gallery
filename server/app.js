@@ -111,8 +111,15 @@ async function start() {
   //  }
     
   //});
+  /*app.post('/public/projects/art', async ( req, res ) => {
+    try {
+      console.log('catch');
+    } catch {
 
-  app.post('/public/projects/art', uploadArt.single('image'), async (req,res) => {
+    }
+  });*/
+
+  app.post('/public/projects/art', uploadArt.any(), async (req,res) => {
     try {
       console.log('PUT!');
       console.log(req.files);
@@ -120,8 +127,8 @@ async function start() {
         return res.status(400).json({message: 'Файл не найден'})
       }
       //console.log(arg);
-      if(req.files.hasOwnProperty('image')) {
-        req.files.image.mv(path.resolve(__dirname, './public/art/'+req.files.image.name));
+      if(req.files.hasOwnProperty('cover')) {
+        req.files['cover'].mv(path.resolve(__dirname, './public/art/'+req.files['cover'].name));
         res.json('Файл загружен!');
         
         fs.readFile(path.resolve(__dirname, './public/art/data.json'), 'utf8', async function (error, data) {
@@ -131,7 +138,7 @@ async function start() {
             "year":"2021",
             "url":"url",
             "cover":{
-              "src":"http://localhost:3001/static/art/"+req.files.image.name,
+              "src":"http://localhost:3001/static/art/"+req.files['cover'].name,
             },
             "content":{
               "description":"",

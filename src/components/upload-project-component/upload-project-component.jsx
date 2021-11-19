@@ -17,7 +17,18 @@ export default function UploadProjectComponent(props) {
       const formData = new FormData();
     
       //formData.append("username", "abc123");
-      formData.append("image", e.target[0].files[0]);
+      
+      [...e.target.elements].forEach((el) => {
+        if(el.type === 'file') {
+          formData.append(el.name, el.files[0]);
+        } else {
+          formData.append(el.name, el.value);
+        }
+        for (var p of formData) {
+          console.log(p);
+        }
+      })
+      //formData.append("image", e.target[0].files[0]);
       //const headers = new Headers({'content-type': 'multipart/form-data'});
 
       try {
@@ -42,7 +53,7 @@ export default function UploadProjectComponent(props) {
       <form className={`${upldPrjComponentStyles.uploadForm}`} onSubmit={submitHandler}>
         <label className={`${upldPrjComponentStyles.label}`} htmlFor="name" >Введите название проекта:
         <input className={`${upldPrjComponentStyles.input}`} type="text" name="name"/></label>
-        <label className={`${upldPrjComponentStyles.label}`} htmlFor="url" >Введите название проекта:
+        <label className={`${upldPrjComponentStyles.label}`} htmlFor="url" >Введите url для страницы проекта:
         <input className={`${upldPrjComponentStyles.input}`} type="text" name="url"/></label>
         <label className={`${upldPrjComponentStyles.label}`} htmlFor="cover" >Загрузите обложку:
         <input className={`${upldPrjComponentStyles.input}`} type="file" name="cover"/></label>

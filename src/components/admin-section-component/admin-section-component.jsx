@@ -8,18 +8,7 @@ import {
 
 
 export default function AdminSectionComponent(props) {
-  const [isProjectEditorOpen, setIsProjectEditorOpen] = React.useState(false);
-  const [currentProject, setCurrentProject] = React.useState('');
   const match = useRouteMatch();
-
-  const onProjectNameClickHandler = (e) => {
-    setIsProjectEditorOpen(true);
-    setCurrentProject(e.target.textContent);
-  }
-
-  const closeModal = () => {
-    setIsProjectEditorOpen(false);
-  }
 
   return (
     <>
