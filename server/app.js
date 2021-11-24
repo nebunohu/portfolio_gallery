@@ -18,6 +18,7 @@ const {Schema} = mongoose;
 /*app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));*/
 app.use(express.json({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(fileUpload());
 app.use( '/static', express.static( path.resolve(__dirname, 'public') ) );
