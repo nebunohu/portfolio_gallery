@@ -9,6 +9,7 @@ import { SERVER_URL } from '../../utils/config';
 import upldPrjComponentStyles from './upload-project-component.module.scss';
 
 export default function UploadProjectComponent(props) {
+  const filesRef = React.useRef(); 
 
   function submitHandler(e) {
     e.preventDefault();
@@ -18,15 +19,17 @@ export default function UploadProjectComponent(props) {
     
       //formData.append("username", "abc123");
       
-      [...e.target.elements].forEach((el) => {
+      [...e.target.elements].forEach((el, index) => {
+        if(index !== e.target.elements.length-1) {
         if(el.type === 'file') {
           formData.append(el.name, el.files[0]);
         } else {
           formData.append(el.name, el.value);
-        }
+        }}
         for (var p of formData) {
           console.log(p);
         }
+      
       })
       //formData.append("image", e.target[0].files[0]);
       //const headers = new Headers({'content-type': 'multipart/form-data'});
@@ -47,20 +50,25 @@ export default function UploadProjectComponent(props) {
     sendFile(e);
   }
 
+  function onChangeHandler(e) {
+    e.preventDefault();
+    console.log(filesRef.current.files);
+  }
+
   return (
     <>
       <h2 className={`${upldPrjComponentStyles.title}`}>Загрузить новый проект в раздел {props.sectionTitle}</h2>
-      <form className={`${upldPrjComponentStyles.uploadForm}`} onSubmit={submitHandler}>
+      <form className={`${upldPrjComponentStyles.uploadForm}`} onSubmit={submitHandler} encType="multipart/form-data">
         <label className={`${upldPrjComponentStyles.label}`} htmlFor="name" >Введите название проекта:
         <input className={`${upldPrjComponentStyles.input}`} type="text" name="name"/></label>
         <label className={`${upldPrjComponentStyles.label}`} htmlFor="url" >Введите url для страницы проекта:
         <input className={`${upldPrjComponentStyles.input}`} type="text" name="url"/></label>
-        <label className={`${upldPrjComponentStyles.label}`} htmlFor="cover" >Загрузите обложку:
-        <input className={`${upldPrjComponentStyles.input}`} type="file" name="cover"/></label>
         <label className={`${upldPrjComponentStyles.label}`} htmlFor="year" >Введите год создания проекта:
         <input className={`${upldPrjComponentStyles.input}`} type="text" name="year"/></label>
         <label className={`${upldPrjComponentStyles.label}`} htmlFor="description" >Введите описание проекта:
         <input className={`${upldPrjComponentStyles.input}`} type="text-area" name="description"/></label>
+        <label className={`${upldPrjComponentStyles.label}`} htmlFor="cover" >Загрузите обложку:
+        <input className={`${upldPrjComponentStyles.input}`} type="file" name="cover" multiple onChange={onChangeHandler} ref={filesRef}/> </label>
         <input className={`${upldPrjComponentStyles.uploadButton}`} type="submit" value="Загрузить"/>
       </form>
     </>

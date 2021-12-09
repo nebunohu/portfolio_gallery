@@ -6,7 +6,7 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const multer = require('multer');
 const upload = multer({dest: path.resolve(__dirname, 'public')});
-const uploadArt = multer({dest: path.resolve(__dirname, './public/projects/art')});
+const uploadArt = multer({ dest: path.resolve(__dirname, './public/projects/art') });
 //const config = require('config');
 const app = express();
 const PORT = /*config.get('port') ||*/ 3001;
@@ -64,13 +64,13 @@ async function start() {
       const userId = 'admin1';
 
       if (login !== correctLogin) {
-        return res.status(400).json({message: 'Неверное имя пользователя'})
+        return res.status(400).json({ message: 'Неверное имя пользователя' })
       }
 
       const isMatch = await bcrypt.compare(password, hashedPassword);
 
       if (!isMatch) {
-        return res.status(400).json({message: 'Неверный пароль'});
+        return res.status(400).json({ message: 'Неверный пароль' });
       }
 
       const token = jwt.sign(
@@ -120,11 +120,11 @@ async function start() {
     }
   });*/
 
-  app.post('/public/projects/art', uploadArt.any(), async (req,res) => {
+  app.post('/public/projects/art', async (req,res) => {
     try {
       console.log('PUT!');
       console.log(req.files);
-      if (!req.files) {
+      if (!req.files || !req.body) {
         return res.status(400).json({message: 'Файл не найден'})
       }
       //console.log(arg);
@@ -135,14 +135,14 @@ async function start() {
         fs.readFile(path.resolve(__dirname, './public/art/data.json'), 'utf8', async function (error, data) {
           let jsonDataFile = JSON.parse(data);
           const newData = {
-            "name":"name",
-            "year":"2021",
-            "url":"url",
+            "name": req.body.name,
+            "year": req.body.year,
+            "url": req.body.url,
             "cover":{
               "src":"http://localhost:3001/static/art/"+req.files['cover'].name,
             },
             "content":{
-              "description":"",
+              "description": req.body.description,
               "items":[
                 {
                   "type":"text/image/video",

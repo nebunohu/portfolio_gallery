@@ -6,6 +6,9 @@ import {
 
 // Components
 
+// Styles
+import admSecCompStyles from './admin-section-component.module.css';
+
 
 export default function AdminSectionComponent(props) {
   const match = useRouteMatch();
@@ -13,7 +16,7 @@ export default function AdminSectionComponent(props) {
   return (
     <>
       <h2>{props.sectionTitle}</h2>
-      <ul>
+      <ul className={admSecCompStyles.list}>
         {!!props.data &&
           props.data.map((el, index) => {
             return (
@@ -24,12 +27,11 @@ export default function AdminSectionComponent(props) {
             );
           })
         }
-        <li>
-          <Link to={`${match.url}/upload`}>
-            <input type="button" value="Загрузить новый проект" onClick={props.setIsUpload} />
-          </Link>
-        </li>
+        
       </ul>
+      <Link to={`${match.url}/upload`}>
+        <input className={admSecCompStyles.uploadPrjBtn} type="button" value="Загрузить новый проект" onClick={props.setIsUpload} />
+      </Link>
       {/*isProjectEditorOpen && <EditProjectPageModal closeModal={closeModal} projectName={currentProject} />*/}
     </>
   );
