@@ -1,7 +1,10 @@
 import React from "react";
 import { 
   Link,
-  useRouteMatch 
+  Outlet,
+  useLocation,
+  useMatch,
+   useParams 
 } from "react-router-dom";
 
 // Components
@@ -9,30 +12,64 @@ import {
 // Styles
 import admSecCompStyles from './admin-section-component.module.css';
 
+// Utils
+import { SERVER_URL } from "../../utils/config";
+import { useDispatch } from "react-redux";
+import { SET_CURRENT_PROJECT } from "../../services/actions/admin-actions";
+
 
 export default function AdminSectionComponent(props) {
-  const match = useRouteMatch();
+  const [fetchData, setFechData] = React.useState([]);
+  //const match = useMatch();
+  const dispatch = useDispatch()
+  const params = useParams();
+
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await fetch(`${SERVER_URL}/static/${params.section}/data.json`);
+        if(res.ok) {
+          const data = await res.json();
+          setFechData(data.data);
+        } else {
+          throw new Error('Fetch error - Status is not ok');
+        }
+      } catch {
+        console.log(Error.message);
+      }
+    }
+
+    getData();
+  }, [params.section]);
+
+  function projectClickHandler(e) {
+    dispatch({type: SET_CURRENT_PROJECT, currentProject: fetchData.find((el) => el.name === e.target.textContent) });
+  }
 
   return (
-    <>
-      <h2>{props.sectionTitle}</h2>
-      <ul className={admSecCompStyles.list}>
-        {!!props.data &&
-          props.data.map((el, index) => {
-            return (
-              <li key={index} onClick={props.setIsEdit}>
-                {/*<Link to={`${match.url}/${el.url}`}>{el.name}</Link>*/}
-                <Link to={`${match.url}/${el.url}`}>{el.name}</Link>
-              </li>
-            );
-          })
-        }
-        
-      </ul>
-      <Link to={`${match.url}/upload`}>
-        <input className={admSecCompStyles.uploadPrjBtn} type="button" value="Загрузить новый проект" onClick={props.setIsUpload} />
-      </Link>
-      {/*isProjectEditorOpen && <EditProjectPageModal closeModal={closeModal} projectName={currentProject} />*/}
-    </>
+    <div style={{'display': 'flex', 'flex-dirction': 'row'}}>
+      <div>
+        <h2>{params.section}</h2>
+        <ul className={admSecCompStyles.list}>
+          {!!fetchData &&
+            fetchData.map((el, index) => {
+              return (
+                <li key={index} onClick={projectClickHandler}>
+                  <Link to={`${el.url}`}>{el.name}</Link>
+                </li>
+              );
+            })
+          }
+          
+        </ul>
+        <Link to={`upload`}>
+          <input className={admSecCompStyles.uploadPrjBtn} type="button" value="Загрузить новый проект" onClick={props.setIsUpload} />
+        </Link>
+      </div>
+      <div className={`${admSecCompStyles.right}`}>
+        <Outlet />  
+      </div>
+      
+    </div>
   );
 }

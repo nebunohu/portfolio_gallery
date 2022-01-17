@@ -1,10 +1,11 @@
 import React from "react";
 import {
-  Switch,
+  Routes,
   Route,
-  useRouteMatch,
+  useMatch,
   Link,
-  useParams
+  useParams,
+  Outlet
 } from 'react-router-dom';
 
 // Components
@@ -24,13 +25,9 @@ export default function AdminDashboardWrapper(props) {
   const [isUpload, setIsUpload] = React.useState(false);
   const [isEdit, setIsEdit] = React.useState(false);
   const [currentProject, setCurrentProject] = React.useState();
-  const match = useRouteMatch();
+//  const match = useMatch();
   
-  function projectClickHandler(e) {
-    setIsEdit(true);
-    setIsUpload(false);
-    setCurrentProject(fetchArtData.find((el) => el.name === e.target.textContent));
-  }
+  
 
   function uploadButtonClickHandler() {
     setIsUpload(true);
@@ -64,61 +61,24 @@ export default function AdminDashboardWrapper(props) {
         <aside>
           <ul>
           <li>
-              <Link to={`${match.url}/art`}>Art</Link>
+              <Link to={`art`}>Art</Link>
             </li>
             <li>
-              <Link to={`${match.url}/photo`}>Photo</Link>
+              <Link to={`photo`}>Photo</Link>
             </li>
             <li>
-              <Link to={`${match.url}/illustration`}>Illustration</Link>
+              <Link to={`illustration`}>Illustration</Link>
             </li>
             <li>
-              <Link to={`${match.url}/design`}>Design</Link>
+              <Link to={`design`}>Design</Link>
             </li>
           </ul>  
         </aside>
-        
+
         <div className={`${dashboardStyles.center}`}>
-          <Switch>
-            <Route path={`${match.path}/art`}>
-              <AdminSectionComponent 
-                sectionTitle='Art' 
-                data={fetchArtData} 
-                setIsEdit={projectClickHandler}
-                setIsUpload={uploadButtonClickHandler}
-              />
-            </Route>
-            <Route path={`${match.path}/photo`}>
-              <AdminSectionComponent 
-                sectionTitle='Photo' 
-                setIsEdit={projectClickHandler}
-                setIsUpload={uploadButtonClickHandler}
-              />
-            </Route>
-            <Route path={`${match.path}/illustration`}>
-              <AdminSectionComponent 
-                sectionTitle='Illustration' 
-                setIsEdit={projectClickHandler}
-                setIsUpload={uploadButtonClickHandler}
-              />
-            </Route>
-            <Route path={`${match.path}/design`}>
-              <AdminSectionComponent 
-                sectionTitle='Design' 
-                setIsEdit={projectClickHandler}
-                setIsUpload={uploadButtonClickHandler}
-              />
-            </Route>
-          </Switch>
+          <Outlet />
         </div>
-        <div className={`${dashboardStyles.right}`}>
-          <Switch>
-            <Route exact path={`${match.path}/:section/:project`}>
-              {isEdit && <EditProjectPage currentProject={currentProject} projectName={props.sectionTitle} />}
-              {isUpload && <UploadProjectComponent sectionTitle={props.sectionTitle} />}
-            </Route>
-          </Switch>
-        </div>
+        
       </div>
       
     </>

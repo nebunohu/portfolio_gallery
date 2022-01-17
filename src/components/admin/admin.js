@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm(props) {
+  const navigate = useNavigate();
   const loginHandler = async function (event) {
     event.preventDefault();
     const login = event.target[0].value;
     const password = event.target[1].value;
+    
   
     try {
       
@@ -21,6 +24,7 @@ function LoginForm(props) {
         throw new Error("Ответ сети был не ок.");
       } else {
         props.loginFlagSetter(true);
+        navigate('/admin/dashboard');
       }
       
     } catch (error) {

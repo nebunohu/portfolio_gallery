@@ -1,7 +1,7 @@
 import React from "react";
 import { 
 	Link,
-	useRouteMatch,
+	useMatch,
  } from 'react-router-dom';
 
 // Images
@@ -12,7 +12,6 @@ import { SERVER_URL } from '../../utils/config';
 
 export default function ArtSection() {
 	const [data, setData] = React.useState([]);
-	const match = useRouteMatch();
 	
 	React.useEffect(() => {
 		const getData = async () => {
@@ -44,7 +43,7 @@ export default function ArtSection() {
 					data.map((el, index) => {
 						return (
 							<div className="projects__item" onClick={onClickHandler(el)} key={index}>
-								<Link to={`${match.url}/${el.url}`}>
+								<Link to={`${el.url}`}>
 										<div className="projects__name">{el.name}</div>
 										<div className="projects__year">{el.year}</div>
 										<img className="projects__image" src={el.cover.src} alt="" />
