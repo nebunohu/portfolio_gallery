@@ -1,7 +1,6 @@
 //import { pasteHtmlTemplate } from "./adminDashboard.jsx";
 import React from "react";
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
@@ -23,18 +22,13 @@ import AdminSectionComponent from "../admin-section-component/admin-section-comp
 import AppHeader from "../app-header/app-header.jsx";
 
 import AppFooter from "../app-footer/app-footer.jsx";
-import ArtSection from "../art-section/art-section";
-import Project from "../project/project";
+
 import ProtectedRoute from "../protected-route/protected-route";
 import UploadProjectComponent from "../upload-project-component/upload-project-component";
 import EditProjectPage from "../edit-project-page/edit-project-page";
 
 // Styles
 import './style.scss';
-
-
-
-
 
 function App() {
   const [state, setState] = React.useState({isAdminPage: false});

@@ -2,22 +2,27 @@
   position: relative;
 }
 
+$circle-big-pos-y: 30px;
+$circle-big-pos-x: -100px;
+$circle-big-d: 100vh;
+$circle-small-d: 10vh;
+
 .circleBig {
   position: absolute;
-  top: 30px;
-  left: -100px;
-  width: 1214px;
-  height: 1214px;
+  top: $circle-big-pos-y;
+  left: $circle-big-pos-x;
+  width: $circle-big-d;
+  height: $circle-big-d;
   border-radius: 50%;
   border: 1px solid rgba(164, 164, 164, 1)
 }
 
 .circleSmall {
   position: absolute;
-  top: 177px;
-  left: 125px;
-  width: 56px;
-  height: 56px;
+  top: calc(#{0px} - ( #{$circle-small-d} / 2 ));
+  left: calc((#{$circle-big-d}/2) - (#{$circle-small-d}/2));
+  width: $circle-small-d;
+  height: $circle-small-d;
   background-color: #313131;
   border-radius: 50%;
   border: 1px solid rgba(164, 164, 164, 1)
