@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/portfolio-gallery/static/css/main.8d58fbaa.chunk.css",
+    "main.js": "/portfolio-gallery/static/js/main.cf98fc6b.chunk.js",
+    "main.js.map": "/portfolio-gallery/static/js/main.cf98fc6b.chunk.js.map",
+    "runtime-main.js": "/portfolio-gallery/static/js/runtime-main.93191593.js",
+    "runtime-main.js.map": "/portfolio-gallery/static/js/runtime-main.93191593.js.map",
+    "static/js/2.466d7472.chunk.js": "/portfolio-gallery/static/js/2.466d7472.chunk.js",
+    "static/js/2.466d7472.chunk.js.map": "/portfolio-gallery/static/js/2.466d7472.chunk.js.map",
+    "static/js/3.c13a1581.chunk.js": "/portfolio-gallery/static/js/3.c13a1581.chunk.js",
+    "static/js/3.c13a1581.chunk.js.map": "/portfolio-gallery/static/js/3.c13a1581.chunk.js.map",
+    "index.html": "/portfolio-gallery/index.html",
+    "static/css/main.8d58fbaa.chunk.css.map": "/portfolio-gallery/static/css/main.8d58fbaa.chunk.css.map",
+    "static/js/2.466d7472.chunk.js.LICENSE.txt": "/portfolio-gallery/static/js/2.466d7472.chunk.js.LICENSE.txt",
+    "static/media/style.scss": "/portfolio-gallery/static/media/NAMU-Pro.ec1b776e.eot"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.93191593.js",
+    "static/js/2.466d7472.chunk.js",
+    "static/css/main.8d58fbaa.chunk.css",
+    "static/js/main.cf98fc6b.chunk.js"
+  ]
+}
