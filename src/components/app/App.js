@@ -4,14 +4,24 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  useLocation,
   //Link
 } from "react-router-dom";
+import { 
+  TransitionGroup,
+  CSSTransition 
+} from 'react-transition-group';
+import { AnimatePresence } from 'framer-motion';
 
 // Components
+import MainPage from "../../pages/main-page/main-page.jsx";
+import ProjectsPage from "../../pages/projects-page/projects-page";
+import ProjectPage from "../../pages/project-page/project-page.jsx";
+import NoPageFound from '../../pages/no-page-found/no-page-found.jsx';
 import AdminComponent from "../admin/admin";
 import AdminSectionComponent from "../admin-section-component/admin-section-component";
 import AppHeader from "../app-header/app-header.jsx";
-import MainPage from "../main-page/main-page";
+
 import AppFooter from "../app-footer/app-footer.jsx";
 import ArtSection from "../art-section/art-section";
 import Project from "../project/project";
@@ -24,9 +34,12 @@ import './style.scss';
 
 
 
+
+
 function App() {
   const [state, setState] = React.useState({isAdminPage: false});
   const [isLogined, setIsLogined] = React.useState(false);
+  const location = useLocation();
 
   React.useEffect(() => {
     if (window.location.pathname.match(/\/admin/i)) setState({...state, isAdminPage: true});
@@ -34,31 +47,21 @@ function App() {
   }, []);
 
   return (
-    
-    <Router>
-      {!state.isAdminPage && (<AppHeader />)}
-      {state.isAdminPage && isLogined && <header><h1>Панель управления</h1></header>}
-      <main>
-        <Routes>
-          <Route exact path='/' element={<MainPage/>} />
-          <Route exact path='/art' element={<ArtSection/>} />
-          <Route path={`/art/:projectId`} element={<Project/>} />
-          <Route exact path='/photo' element={<ArtSection/>} />
-          <Route path={`/photo/:projectId`} element={<Project/>} />
-          <Route exact path='/illustration' element={<ArtSection/>} />
-          <Route exact path='/design' element={<ArtSection/>} />
-          <Route path={`/:section/:projectId`} element={<Project/>} />
-          <Route exact path='/admin' element={<AdminComponent isLoggedIn={isLogined} loginFlagSetter={setIsLogined}/>} />
-          <Route path='/admin/dashboard' element={<ProtectedRoute isLogined={isLogined} />} >
-            <Route path={`:section`} element= {<AdminSectionComponent />} >
-              <Route path={`upload`} element={<UploadProjectComponent />} />
-              <Route path={`:project`} element={<EditProjectPage />} />
-            </Route>
-          </Route>
-        </Routes>
-      </main>
-      <AppFooter />
-    </Router>
+    <AnimatePresence exitBeforeEnter>
+          <Routes location={location} key={location.key}>
+              <Route exact path='/' element={<MainPage/>} />
+              <Route path='/:section' element={<ProjectsPage/>} />
+              <Route path={`/:section/:projectId`} element={<ProjectPage/>} />
+              <Route exact path='/admin' element={<AdminComponent isLoggedIn={isLogined} loginFlagSetter={setIsLogined}/>} />
+              <Route path='/admin/dashboard' element={<ProtectedRoute isLogined={isLogined} />} >
+                <Route path={`:section`} element= {<AdminSectionComponent />} >
+                  <Route path={`upload`} element={<UploadProjectComponent />} />
+                  <Route path={`:project`} element={<EditProjectPage />} />
+                </Route>
+              </Route>
+              <Route element={<NoPageFound/>} />
+          </Routes>
+    </AnimatePresence>
   );
 }
 

@@ -37,7 +37,7 @@ export default function AdminDashboardWrapper(props) {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const res = await fetch(`${SERVER_URL}/static/art/data.json`);
+        const res = await fetch(`${SERVER_URL}/static/media_projects/data.json`);
         if(res.ok) {
           const data = await res.json();
           setFechArtData(data.data);
@@ -61,16 +61,16 @@ export default function AdminDashboardWrapper(props) {
         <aside>
           <ul>
           <li>
-              <Link to={`art`}>Art</Link>
+              <Link className={`${dashboardStyles.link}`} to={`media_projects`}>Media projects</Link>
             </li>
             <li>
-              <Link to={`photo`}>Photo</Link>
+              <Link className={`${dashboardStyles.link}`} to={`photo`}>Photo</Link>
             </li>
             <li>
-              <Link to={`illustration`}>Illustration</Link>
+              <Link className={`${dashboardStyles.link}`} to={`illustration`}>Illustration</Link>
             </li>
             <li>
-              <Link to={`design`}>Design</Link>
+              <Link className={`${dashboardStyles.link}`} to={`design`}>Design</Link>
             </li>
           </ul>  
         </aside>

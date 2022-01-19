@@ -10,7 +10,7 @@ import {
 // Components
 
 // Styles
-import admSecCompStyles from './admin-section-component.module.css';
+import admSecCompStyles from './admin-section-component.module.scss';
 
 // Utils
 import { SERVER_URL } from "../../utils/config";
@@ -55,7 +55,7 @@ export default function AdminSectionComponent(props) {
             fetchData.map((el, index) => {
               return (
                 <li key={index} onClick={projectClickHandler}>
-                  <Link to={`${el.url}`}>{el.name}</Link>
+                  <Link className={`${admSecCompStyles.link}`} to={`${el.url}`}>{el.name}</Link>
                 </li>
               );
             })
