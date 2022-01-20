@@ -8,6 +8,7 @@ export default function Navigation() {
   return (
     <div className={`${navigationStyles.navigationWrapper}`}>
       <nav>
+        <div className={`${navigationStyles.name}`}>julia gryoza</div>
         <ul className={`${navigationStyles.navUl}`}>
           <Link className={`${navigationStyles.navLink}`} to='media_projects' state={{from: location.pathname}}>
             <li className={`${navigationStyles.navLi} ${navigationStyles.media}`}>MEDIA PROJECTS</li>
@@ -33,6 +34,7 @@ export default function Navigation() {
             <li className={`${navigationStyles.navLi} ${navigationStyles.contacts}`}>CONTACTS</li>
           </Link>
         </ul>
+        <div className={`${navigationStyles.email}`}>gryozart@gmail.com</div>
       </nav>
     </div>
   )

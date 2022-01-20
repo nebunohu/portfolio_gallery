@@ -5,6 +5,9 @@ import { motion } from 'framer-motion';
 import Decoration from "../../components/decoration/decoration.jsx";
 import Navigation from "../../components/navigation/navigation.jsx";
 
+// Styles
+import mainPageStyles from './main-page.modeule.scss';
+
 // Utils 
 import { pageVariants, pageTransition } from "../../utils/transitions.js";
 
