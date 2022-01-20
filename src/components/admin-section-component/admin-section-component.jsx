@@ -2,8 +2,6 @@ import React from "react";
 import { 
   Link,
   Outlet,
-  useLocation,
-  useMatch,
    useParams 
 } from "react-router-dom";
 

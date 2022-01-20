@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 960px;
+  height: 57vh;
+  position: absolute;
+  top: 50%;
+  padding-left: 8vw;
+  transform: translate(0, -50%);
+}
+
+.albumTitle {
+  font-size: 26px;
+}
+
+.albumContent {
+  display: flex;
+  flex-flow: row nowrap;
+}

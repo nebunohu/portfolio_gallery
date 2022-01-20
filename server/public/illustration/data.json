@@ -1,5 +1,16 @@
 {
   "success":true,
   "section":"illustration",
-  "data":[]
+  "data":[
+    {
+      "title": "",
+      "src": "http://localhost:3001/static/illustration/illustration1.png",
+      "caption": ""
+    },
+    {
+      "title": "",
+      "src": "http://localhost:3001/static/ilustration/illustration2.png",
+      "caption": ""
+    }
+  ]
 }

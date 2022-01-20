@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { motion } from 'framer-motion';
 
 // Styles
 import projectsPagetyles from './projects-page.module.scss';
@@ -12,12 +11,12 @@ import { getData } from '../../services/actions/API-actions';
 
 // utils
 import { SERVER_URL } from '../../utils/config';
-import { pageVariants, pageTransition } from "../../utils/transitions.js";
 
 // Components
 import Gallery from '../../components/gallery/gallery';
 import NoPageFound from '../no-page-found/no-page-found';
 import BackButton from '../../components/back-button/back-button';
+import RouterSlider from '../../components/router-slider/router-slider';
 
 
 export default function ProjectsPage() {
@@ -38,14 +37,7 @@ export default function ProjectsPage() {
     case 'media_projects':
     case 'design': {
       return (
-        <motion.div
-          style={{'position': 'relative', 'width': '100%', 'height': '100%'}}
-          initial="initial"
-          animate="in"
-          exit="out"
-          variants={pageVariants}
-          transition={pageTransition}
-        >
+        <RouterSlider>
           <BackButton />
           <section className={`${projectsPagetyles.wrapper}`}>
             {
@@ -60,13 +52,18 @@ export default function ProjectsPage() {
               })
             }
           </section>
-        </motion.div>
+        </RouterSlider>
       )
     } 
 
     case 'illustration':
     case 'photography': {
-      return <Gallery />
+      return (
+        <RouterSlider>
+          <BackButton />
+          <Gallery />
+        </RouterSlider>
+      )
     }
 
     default: return <NoPageFound />

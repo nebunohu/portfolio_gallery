@@ -3,25 +3,18 @@ import React from "react";
 import {
   Routes,
   Route,
-  useLocation,
-  //Link
+  useLocation
 } from "react-router-dom";
-import { 
-  TransitionGroup,
-  CSSTransition 
-} from 'react-transition-group';
 import { AnimatePresence } from 'framer-motion';
 
 // Components
 import MainPage from "../../pages/main-page/main-page.jsx";
 import ProjectsPage from "../../pages/projects-page/projects-page";
 import ProjectPage from "../../pages/project-page/project-page.jsx";
+import AboutPage from "../../pages/about-page/about-page.jsx";
 import NoPageFound from '../../pages/no-page-found/no-page-found.jsx';
 import AdminComponent from "../admin/admin";
 import AdminSectionComponent from "../admin-section-component/admin-section-component";
-import AppHeader from "../app-header/app-header.jsx";
-
-import AppFooter from "../app-footer/app-footer.jsx";
 
 import ProtectedRoute from "../protected-route/protected-route";
 import UploadProjectComponent from "../upload-project-component/upload-project-component";
@@ -44,6 +37,7 @@ function App() {
     <AnimatePresence exitBeforeEnter>
           <Routes location={location} key={location.key}>
               <Route exact path='/' element={<MainPage/>} />
+              <Route exact path='/about' element={<AboutPage/>} />
               <Route path='/:section' element={<ProjectsPage/>} />
               <Route path={`/:section/:projectId`} element={<ProjectPage/>} />
               <Route exact path='/admin' element={<AdminComponent isLoggedIn={isLogined} loginFlagSetter={setIsLogined}/>} />

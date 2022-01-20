@@ -28,11 +28,11 @@ export default function Navigation() {
         </ul>
         <ul className={`${navigationStyles.infoBlock}`}>
           <Link className={`${navigationStyles.navLink}`} to='about' state={{from: location.pathname}}>
-            <li className={`${navigationStyles.navLi} ${navigationStyles.about}`}>ABOUT</li>
+            <li className={`${navigationStyles.navLi} ${navigationStyles.about}`}>ABOUT & <br/> CONTACTS</li>
           </Link>
-          <Link className={`${navigationStyles.navLink}`} to='contacts' state={{from: location.pathname}}>
+          {/*<Link className={`${navigationStyles.navLink}`} to='contacts' state={{from: location.pathname}}>
             <li className={`${navigationStyles.navLi} ${navigationStyles.contacts}`}>CONTACTS</li>
-          </Link>
+          </Link>*/}
         </ul>
         <div className={`${navigationStyles.email}`}>gryozart@gmail.com</div>
       </nav>
