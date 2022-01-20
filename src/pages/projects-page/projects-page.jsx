@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 // Styles
-import projectsPagetyles from './projects-page.module.scss';
 
 // Actions
 import { getData } from '../../services/actions/API-actions';
@@ -15,55 +14,31 @@ import { SERVER_URL } from '../../utils/config';
 // Components
 import Gallery from '../../components/gallery/gallery';
 import NoPageFound from '../no-page-found/no-page-found';
-import BackButton from '../../components/back-button/back-button';
-import RouterSlider from '../../components/router-slider/router-slider';
+import { CLEAR_SUCCESS_FLAG } from '../../services/actions/projects-actions';
+import ProjectsSelector from '../../components/projects-selector/projects-selector';
 
 
 export default function ProjectsPage() {
   const data = useSelector(store => store.projects.data);
   const dispatch = useDispatch();
-  const location = useLocation();
   const params = useParams();
 
   useEffect(() => {
 		dispatch(getData(`${SERVER_URL}/static/${params.section}/data.json`));
-	}, []);
-
-  function onClickHandler(item) {
-		
-	}
+    return (() => {
+      dispatch({type: CLEAR_SUCCESS_FLAG});
+    })
+	}, [dispatch, params.section]);
 
   switch (params.section) {
     case 'media_projects':
     case 'design': {
-      return (
-        <RouterSlider>
-          <BackButton />
-          <section className={`${projectsPagetyles.wrapper}`}>
-            {
-              !!data && data.map((el, index) => {
-                return (
-                  <div className={`${projectsPagetyles.projectContainer}`} onClick={onClickHandler(el)} key={index}>
-                    <Link className={`${projectsPagetyles.link}`} to={`${el.url}`} state={{from: location.pathname}}>
-                        <div className="projects__name">{el.name}</div>
-                    </Link>
-                  </div>
-                );
-              })
-            }
-          </section>
-        </RouterSlider>
-      )
+      return <ProjectsSelector data= {data} />
     } 
 
     case 'illustration':
     case 'photography': {
-      return (
-        <RouterSlider>
-          <BackButton />
-          <Gallery />
-        </RouterSlider>
-      )
+      return <Gallery data={data} />
     }
 
     default: return <NoPageFound />
