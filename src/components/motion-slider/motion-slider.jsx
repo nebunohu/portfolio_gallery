@@ -10,7 +10,7 @@ export default function MotionSlider({children}) {
   const state = useSelector(store => store.carousel);
   const transition = undefined;
 
-  const negativeItems = state.items.map(
+  /*const negativeItems = state.items.map(
     item => item * -1 + trackDimensions.x || 0
   );
 
@@ -46,11 +46,10 @@ export default function MotionSlider({children}) {
       ),
       transition
     });
-  }
+  }*/
   return (
     <motion.div
-      ref={trackRef}  
-      onDragEnd={onDragEnd}
+      
     >
       {children}
     </motion.div>

@@ -3,12 +3,20 @@
   right: 0;
   top: 25vh;
   width: 30vw;
+
+  @media (max-width: 480px) {
+    top: 0;
+    width: 100%;
+  }
 }
 
 .name {
   padding-left: 14px;
   font-size: 1.5vh;
   margin-bottom: 5.5Vh;
+  @media (max-width: 480px) {
+    font-size: 5vh;
+  }
 }
 
 .email {
@@ -33,6 +41,11 @@
   font-style: normal;
   font-weight: normal;
   font-size: 3vh;
+
+  @media (max-width: 480px) {
+    font-size: 5vh;
+    height: 7vh;
+  }
 }
 
 .navLink {
