@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { getAuth } from 'firebase/auth';
 
 function LoginForm(props) {
   const navigate = useNavigate();
@@ -11,19 +12,21 @@ function LoginForm(props) {
   
     try {
       
-      let body = { login: login, password: password };
+      let body = { email: login, password: password, returnSecureToken: true };
       body = JSON.stringify(body);
       let headers = new Headers({ "content-type": "application/json" });
-      const response = await fetch("http://localhost:3001/auth/login", {
+      const apiKey = 'AIzaSyCE57uRhFTLICxSFJbxaE3XTdZadaXvcm8';
+      const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
         method: "POST",
         body,
-        mode: "cors",
         headers,
       });
       if (!response.ok) {
         throw new Error("Ответ сети был не ок.");
       } else {
         props.loginFlagSetter(true);
+        const data = await response.json();
+        localStorage.setItem('token', data.idToken);
         navigate('/admin/dashboard');
       }
       

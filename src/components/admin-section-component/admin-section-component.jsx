@@ -11,9 +11,10 @@ import {
 import admSecCompStyles from './admin-section-component.module.scss';
 
 // Utils
-import { SERVER_URL } from "../../utils/config";
+import { FIREBASE_URL } from "../../utils/config";
 import { useDispatch } from "react-redux";
 import { SET_CURRENT_PROJECT } from "../../services/actions/admin-actions";
+import { addJsonEnding } from "../../utils/addJsonEnding";
 
 
 export default function AdminSectionComponent(props) {
@@ -25,7 +26,7 @@ export default function AdminSectionComponent(props) {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const res = await fetch(`${SERVER_URL}/static/${params.section}/data.json`);
+        const res = await fetch(`${FIREBASE_URL}/${addJsonEnding(params.section)}`);
         if(res.ok) {
           const data = await res.json();
           setFechData(data.data);
@@ -45,7 +46,7 @@ export default function AdminSectionComponent(props) {
   }
 
   return (
-    <div style={{'display': 'flex', 'flex-dirction': 'row'}}>
+    <div style={{'display': 'flex', 'flexDirection': 'row'}}>
       <div>
         <h2>{params.section}</h2>
         <ul className={admSecCompStyles.list}>

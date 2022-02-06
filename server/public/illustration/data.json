@@ -1,16 +1,18 @@
 {
-  "success":true,
-  "section":"illustration",
-  "data":[
-    {
-      "title": "",
-      "src": "http://localhost:3001/static/illustration/illustration1.png",
-      "caption": ""
-    },
-    {
-      "title": "",
-      "src": "http://localhost:3001/static/illustration/illustration2.png",
-      "caption": ""
-    }
-  ]
+  "illustration": {
+    "success":true,
+    "section":"illustration",
+    "data":[
+      {
+        "title": "",
+        "src": "http://localhost:3001/static/illustration/illustration1.png",
+        "caption": ""
+      },
+      {
+        "title": "",
+        "src": "http://localhost:3001/static/illustration/illustration2.png",
+        "caption": ""
+      }
+    ]
+  }
 }

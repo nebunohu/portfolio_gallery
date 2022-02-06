@@ -1,4 +1,6 @@
 import React from 'react';
+import { initializeApp } from 'firebase/app';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 // Components
 
@@ -36,12 +38,31 @@ export default function UploadProjectComponent(props) {
 
       try {
         //Отправка изображения на сервер по адресу http://localhost:3000/public/projects/art
-        const response = await fetch(
+        /*const response = await fetch(
           `${SERVER_URL}/public/projects/art`,
           { method: "POST", mode: "cors", body: formData }
         );
         const result = await response.json();
-        console.log("Успех: ", JSON.stringify(result));
+        console.log("Успех: ", JSON.stringify(result));*/
+        const firebaseConfig = {
+          apiKey: "AIzaSyCE57uRhFTLICxSFJbxaE3XTdZadaXvcm8",
+          authDomain: "portfolio-gallery-f62a0.firebaseapp.com",
+          databaseURL: "https://portfolio-gallery-f62a0-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "portfolio-gallery-f62a0",
+          storageBucket: "portfolio-gallery-f62a0.appspot.com",
+          messagingSenderId: "142005184590",
+          appId: "1:142005184590:web:081055667acccb6d837b1f"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const storage = getStorage(app);
+        console.log(e.target[4].files[0]);
+        console.log(storage);
+        const storageRef = ref(storage, 'path/some-child');
+        uploadBytes(storageRef, e.target[4].files[0]).then((snapshot) => {
+          console.log('Uploaded a blob or file!');
+        });
       } catch (error) {
         console.log("Ошибка:", error);
       }

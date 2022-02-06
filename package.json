@@ -12,6 +12,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
+    "firebase": "^9.6.6",
     "framer-motion": "^4.1.17",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12",
@@ -35,7 +36,7 @@
     "eject": "react-scripts eject",
     "client": "react-scripts start",
     "server": "node ./node_modules/nodemon/bin/nodemon.js ./server/app.js",
-    "start": "concurrently \"npm run server\" \"npm run client\""
+    "start": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [

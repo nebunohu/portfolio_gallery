@@ -9,13 +9,16 @@ import { useSelector } from 'react-redux';
 import { getData } from '../../services/actions/API-actions';
 
 // utils
-import { SERVER_URL } from '../../utils/config';
+import { FIREBASE_URL } from '../../utils/config';
 
 // Components
 import Gallery from '../../components/gallery/gallery';
 import NoPageFound from '../no-page-found/no-page-found';
 import { CLEAR_SUCCESS_FLAG } from '../../services/actions/projects-actions';
 import ProjectsSelector from '../../components/projects-selector/projects-selector';
+
+// Utils
+import { addJsonEnding } from '../../utils/addJsonEnding';
 
 
 export default function ProjectsPage() {
@@ -24,7 +27,7 @@ export default function ProjectsPage() {
   const params = useParams();
 
   useEffect(() => {
-		dispatch(getData(`${SERVER_URL}/static/${params.section}/data.json`));
+		dispatch(getData(`${FIREBASE_URL}/${addJsonEnding(params.section)}`));
     return (() => {
       dispatch({type: CLEAR_SUCCESS_FLAG});
     })
