@@ -27,8 +27,8 @@ export default function Gallery({data}) {
           <MotionSlider>
             {
               params.section === "photography" ?
-                data[0].content.map((el, index) => <img src={el.src} alt={el.caption} key={index} />)  :
-                data.map((el, index) => <img src={el.src} alt={el.caption} key={index} />)  
+                data[0].content.map((el, index) => <img draggable={false} src={el.src} alt={el.caption} key={index} />)  :
+                data.map((el, index) => <img draggable={false} src={el.src} alt={el.caption} key={index} />)  
             }
           </MotionSlider>
           

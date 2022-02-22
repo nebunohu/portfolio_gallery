@@ -1,0 +1,12 @@
+.track {
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: min-content;
+  gap: 25px;
+  cursor: grab;
+  
+}
+
+.track:active {
+  cursor: grabbing;
+}

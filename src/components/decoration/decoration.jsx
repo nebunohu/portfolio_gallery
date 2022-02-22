@@ -5,7 +5,7 @@ import decorationStyles from './decoration.module.scss';
 
 export default function Decoration() {
   return (
-      <motion.iv 
+      <motion.div 
         className={`${decorationStyles.circleBig}`} 
         animate={{
           rotate: 360
@@ -13,7 +13,7 @@ export default function Decoration() {
         transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
       >
       <div className={`${decorationStyles.circleSmall}`} />
-      </motion.iv>
+      </motion.div>
     
   )
 }

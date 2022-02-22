@@ -1,55 +1,47 @@
 
 import useWindowSize from '@rehooks/window-size';
+//import useDimensions from 'react-use-dimensions';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useElementSize } from 'usehooks-ts'
 import { motion, useAnimation } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
+// Styles
+import styles from './motion-slider.module.css';
+
 export default function MotionSlider({children}) {
-  const dispatch = useDispatch();
-  const velocity = 1;
+  const [rerender, setRerender] = useState(false);
+  const [dragConstraints, setDragConstraints] = useState({left: 0, right: 0});
   const state = useSelector(store => store.carousel);
-  const transition = undefined;
+  const sliderTrackRef = useRef(null);
+  const [squareRef, { width, height }] = useElementSize()
+  
+  useEffect(() => {
+    sliderTrackRef.current = document.getElementById('slider-track').getBoundingClientRect();
+    const win = window;
+    setTimeout(() => setDragConstraints(), 1000)
+  }, []);
 
-  /*const negativeItems = state.items.map(
-    item => item * -1 + trackDimensions.x || 0
-  );
+  // if(!dragConstraints && sliderTrackRef.current) {
+  //   setDragConstraints({
+  //     left: window.innerWidth - sliderTrackRef.current.width - sliderTrackRef.current.x,
+  //     right: 0 + sliderTrackRef.current.x
+  //   });
+  //   setRerender(true);
+  // }
+  // if(rerender) setRerender(false);
 
-  const windowDimensions = useWindowSize();
-  const controls = useAnimation();
-
-  function onDragEnd(event, info) {
-    const offset = info.offset.x;
-    const correctedVelocity = info.velocity.x * velocity;
-
-    const direction = correctedVelocity < 0 || offset < 0 ? 1 : -1;
-    const startPosition = info.point.x - offset;
-
-    const endOffset =
-      direction === 1
-        ? Math.min(correctedVelocity, offset)
-        : Math.max(correctedVelocity, offset);
-    const endPosition = startPosition + endOffset;
-
-    const closestPosition = negativeItems.reduce((prev, curr) =>
-      Math.abs(curr - endPosition) < Math.abs(prev - endPosition) ? curr : prev
-    );
-
-    const activeSlide = negativeItems.indexOf(closestPosition);
-    dispatch({ type: "SET_ACTIVE_ITEM", activeItem: activeSlide });
-
-    controls.start({
-      x: Math.max(
-        closestPosition,
-        windowDimensions.innerWidth -
-          trackDimensions.width -
-          trackDimensions.x || 0
-      ),
-      transition
-    });
-  }*/
   return (
     <motion.div
-      
+    ref={squareRef}
+      id='slider-track'
+      className={`${styles.track}`}
+      drag="x"
+      dragConstraints={{
+        left: 0 - window.innerWidth,
+        right: window.innerWidth - 500
+      }}
     >
       {children}
     </motion.div>
