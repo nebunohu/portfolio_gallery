@@ -1,8 +1,8 @@
 .track {
   display: flex;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   min-width: min-content;
-  gap: 25px;
+  gap: 70px;
   cursor: grab;
   
 }

@@ -37,7 +37,8 @@
     "eject": "react-scripts eject",
     "client": "react-scripts start",
     "server": "node ./node_modules/nodemon/bin/nodemon.js ./server/app.js",
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "deploy": "firebase deploy --only hosting"
   },
   "eslintConfig": {
     "extends": [

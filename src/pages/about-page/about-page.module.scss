@@ -1,16 +1,32 @@
 .aboutWrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  width: 62.5vw;
+  width: 100vw;
   min-width: 960px;
-  height: 57vh;
+  height: 100vh;
+  padding: 185px 0 90px 150px;
   position: absolute;
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
+  overflow-x: hidden;
+  background-color: rgba(168, 181, 174, 1)
 }
 
-.photo {
+.textArea {
+  text-align: center;
+}
+
+.header {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 38px;
+  line-height: 107.12%;
+  /* identical to box height, or 41px */
+
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
