@@ -18,7 +18,7 @@ export default function ProjectsSelector({data}) {
             return (
               <div className={`${pageSelectorStyles.projectContainer}`} key={index}>
                 <Link className={`${pageSelectorStyles.link}`} to={`${el.url}`} state={{from: location.pathname}}>
-                    <div className="projects__name">{el.name}</div>
+                    <div className={`${pageSelectorStyles.projectName}`}>{el.name}</div>
                 </Link>
               </div>
             );
