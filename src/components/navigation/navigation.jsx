@@ -13,7 +13,7 @@ export default function Navigation({setMenuItem}) {
 
   return (
     <div className={`${navigationStyles.navigationWrapper}`}>
-      <nav>
+      <nav className={`${navigationStyles.nav}`}>
         <div className={`${navigationStyles.name}`}>julia gryoza projects</div>
         <ul className={`${navigationStyles.navUl}`}>
           <Link 
@@ -53,7 +53,7 @@ export default function Navigation({setMenuItem}) {
             <li className={`${navigationStyles.navLi} ${navigationStyles.photography}`}>PHOTOGRAPHY</li>
           </Link>
           <Link 
-            className={`${navigationStyles.navLink}`} 
+            className={`${navigationStyles.navLink} ${navigationStyles.invisibleNavLink}`} 
             to='fine_art' 
             state={{from: location.pathname}}
             onMouseEnter={(e) => {hoverHandler(e, 'fine_art')}}
@@ -79,7 +79,7 @@ export default function Navigation({setMenuItem}) {
             onMouseEnter={(e) => {hoverHandler(e, 'contacts')}}
             onMouseLeave={(e) => {hoverHandler(e, '')}}
           >
-            <li className={`${navigationStyles.navLi} ${navigationStyles.contacts}`}>CONTACTS</li>
+            <li className={`${navigationStyles.navLi} ${navigationStyles.contacts} ${navigationStyles.invisibleNavLink}`}>CONTACTS</li>
           </Link>
         </ul>
         <div className={`${navigationStyles.email}`}>gryozart@gmail.com</div>

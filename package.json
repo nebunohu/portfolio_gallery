@@ -38,6 +38,7 @@
     "client": "react-scripts start",
     "server": "node ./node_modules/nodemon/bin/nodemon.js ./server/app.js",
     "start": "react-scripts start",
+    "predeploy": "npm run build",
     "deploy": "firebase deploy --only hosting"
   },
   "eslintConfig": {

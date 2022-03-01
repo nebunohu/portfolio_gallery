@@ -6,6 +6,9 @@
 
   @media(max-width: 480px) {
     flex-flow: column nowrap;
+    overflow: scroll;
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
 }
 
@@ -24,6 +27,11 @@
   font-family: Mulish, Arial, sans-serif;
   font-size: 38px;
   text-transform: uppercase;
+  
+  @media(max-width: 690px) {
+    
+    width: 100%;
+  }
 }
 
 .link {

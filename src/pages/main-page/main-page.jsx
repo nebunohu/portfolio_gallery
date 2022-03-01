@@ -8,31 +8,47 @@ import RouterSlider from "../../components/router-slider/router-slider.jsx";
 // Styles
 import styles from './main-page.module.scss';
 
+// Images
+import taroSrc from '../../images/taro-cards.png';
+import illustrationSrc from '../../images/illustration.png';
+import designSrc from '../../images/design.png';
+import photoSrc from '../../images/young-julia.png';
+
 export default function MainPage() {
   const [menuItem, setMenuItem] = useState('');
   let backgroundStyle = `${styles.wrapper}`;
+  let imageSrc = '';
 
-  switch(menuItem) {
-    case 'media_projects':
-      backgroundStyle += ` ${styles.bgRed}`;
-    break;
-    case 'illustration':
-      backgroundStyle += ` ${styles.bgYellow}`;
-    break;
-    case 'design':
-      backgroundStyle += ` ${styles.bgPurple}`;
-    break;
-    case 'about':
-      backgroundStyle += ` ${styles.bgGrenGrey}`;
-    break;
-    default:
-    break;
+  if(window.innerWidth > 480) {
+    switch(menuItem) {
+      case 'media_projects':
+        backgroundStyle += ` ${styles.bgRed}`;
+        imageSrc = taroSrc;
+      break;
+      case 'illustration':
+        backgroundStyle += ` ${styles.bgYellow}`;
+        imageSrc = illustrationSrc;
+      break;
+      case 'design':
+        backgroundStyle += ` ${styles.bgPurple}`;
+        imageSrc = designSrc;
+      break;
+      case 'about':
+        backgroundStyle += ` ${styles.bgGrenGrey}`;
+        imageSrc = photoSrc;
+      break;
+      default:
+      break;
+    }
   }
 
   return (
     <div className={backgroundStyle}>
       <RouterSlider>
-        <Decoration />
+        {!!imageSrc && <div className={`${styles.imageWrapper}`}>
+            <img  src={imageSrc} alt=''/>
+          </div>}
+        {/*<Decoration />*/}
         <Navigation setMenuItem={(item) => setMenuItem(item)} />
       </RouterSlider>
     </div>

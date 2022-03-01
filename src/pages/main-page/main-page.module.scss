@@ -3,18 +3,60 @@
   height: 100vh;
 }
 
+@keyframes bg-change-red {
+  to {
+    background-color: rgba(194, 81, 65, 1);
+  }
+}
+
+@keyframes bg-change-yellow {
+  to {
+    background-color: rgba(238, 223, 83, 1);
+  }
+}
+
+@keyframes bg-change-purple {
+  to {
+    background-color: rgba(131, 41, 94, 1);
+  }
+}
+
+@keyframes bg-change-green-grey {
+  to {
+    background-color: rgba(168, 181, 174, 1);
+  }
+}
+
+$duration: 0.3s;
+
 .bgRed {
-  background-color: rgba(194, 81, 65, 1);
+  animation-duration: $duration;
+  animation-fill-mode: forwards;
+  animation-name: bg-change-red;
 }
 
 .bgYellow {
-  background-color: rgba(238, 223, 83, 1);
+  animation-duration: $duration;
+  animation-fill-mode: forwards;
+  animation-name: bg-change-yellow;
 }
 
 .bgPurple {
-  background-color: rgba(131, 41, 94, 1);
+  animation-duration: $duration;
+  animation-fill-mode: forwards;
+  animation-name: bg-change-purple;
 }
 
 .bgGrenGrey {
-  background-color: rgba(168, 181, 174, 1)
+  animation-duration: $duration;
+  animation-fill-mode: forwards;
+  animation-name: bg-change-green-grey;
+}
+
+.imageWrapper {
+  height: 100%;
+  width: 73vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

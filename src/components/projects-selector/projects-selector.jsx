@@ -11,8 +11,8 @@ export default function ProjectsSelector({data}) {
   const location = useLocation();
   return (
     <RouterSlider>
-      <BackButton />
       <section className={`${pageSelectorStyles.wrapper}`}>
+      <BackButton />
         {
           !!data && data.map((el, index) => {
             return (

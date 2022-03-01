@@ -7,6 +7,17 @@
   @media (max-width: 480px) {
     top: 0;
     width: 100%;
+    height: 100%;
+    padding: 30px;
+  }
+}
+
+.nav {
+  @media (max-width: 480px) {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    height: 100%;
   }
 }
 
@@ -15,7 +26,9 @@
   font-size: 1.8vh;
   margin-bottom: 5.5Vh;
   @media (max-width: 480px) {
-    font-size: 5vh;
+    font-size: 2vh;
+    padding-bottom: 92px;
+    margin-bottom: 0;
   }
 }
 
@@ -23,10 +36,15 @@
   padding-left: 14px;
   font-size: 1.8vh;
   margin-top: 5.5vh;
+  @media (max-width: 480px) {
+    font-size: 2vh;
+  }
 }
 
 .navUl {
   list-style-type: none;
+  @media (max-width: 480px) {
+  }
 }
 
 .navLi {
@@ -43,14 +61,19 @@
   font-size: 3vh;
 
   @media (max-width: 480px) {
-    font-size: 5vh;
+    font-size: 4.5vh;
     height: 7vh;
+    padding-left: 0px;
+    letter-spacing: 0px;
   }
 }
 
 .navLink {
   color: inherit;
   text-decoration: none;
+  @media (max-width: 480px) {
+
+  }
 }
 
 .infoBlock {
@@ -88,4 +111,8 @@
 
 .contacts:hover {
   background-color: rgba(19, 71, 255, 1);
+}
+
+.invisibleNavLink {
+  display: none;
 }

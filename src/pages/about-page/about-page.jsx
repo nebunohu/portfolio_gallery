@@ -16,7 +16,7 @@ export default function AboutPage() {
           {/*<img className={`${aboutPageStyles.photo}`} src={youngJuliaPhoto} alt='Young author'/>*/}
           <div className={`${aboutPageStyles.header}`}>Who is she?</div>
           <div className={`${aboutPageStyles.textArea}`}>
-            Hi, I’m Julia!<br/>
+            <b>Hi, I’m Julia!</b><br/>
             <br/>
             I’m not good in writing about myself but<br/> 
             good in ideas generation.<br/>

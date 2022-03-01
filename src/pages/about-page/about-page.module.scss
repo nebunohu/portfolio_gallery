@@ -12,11 +12,25 @@
   margin-right: -50%;
   transform: translate(-50%, -50%);
   overflow-x: hidden;
-  background-color: rgba(168, 181, 174, 1)
+  background-color: rgba(168, 181, 174, 1);
+
+  @media (max-width: 480px) {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-right: 0;
+    padding: 90px 0 60px 30px;
+    transform: translate(0, 0);
+    min-width: 0;
+  }
 }
 
 .textArea {
   text-align: center;
+
+  @media (max-width: 480px) {
+    text-align: left;
+  }
 }
 
 .header {
@@ -29,4 +43,9 @@
 
   letter-spacing: -0.01em;
   text-transform: uppercase;
+  padding-bottom: 50px;
+}
+
+.aboutWrapper:nth-child(3) {
+  margin-top: 105px;
 }
