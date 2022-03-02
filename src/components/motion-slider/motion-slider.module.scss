@@ -4,7 +4,10 @@
   min-width: min-content;
   gap: 70px;
   cursor: grab;
-  
+  @media (max-width: 420px) {
+    gap: 0;
+    height: 100%;
+  }
 }
 
 .track:active {

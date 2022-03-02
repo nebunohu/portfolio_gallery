@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 // Styles
-import styles from './motion-slider.module.css';
+import styles from './motion-slider.module.scss';
 
 export default function MotionSlider({children}) {
   const [dragConstraints, setDragConstraints] = useState({left: 0, right: 0});
@@ -13,12 +13,12 @@ export default function MotionSlider({children}) {
       const rect = entry.target.getBoundingClientRect();
       if(rect.x > window.innerWidth) {
         setDragConstraints({
-          left: window.innerWidth - entry.target.scrollWidth - ((rect.x - window.innerWidth)*2),
+          left: 0 - entry.target.scrollWidth /*- ((rect.x - )*2)*/,
           right: 0
         })
       } else {
         setDragConstraints({
-          left: window.innerWidth - entry.target.scrollWidth - (rect.x*2),
+          left: window.innerWidth - entry.target.scrollWidth /*- (rect.x*2)*/,
           right: 0
         })
       }

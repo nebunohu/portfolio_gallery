@@ -1,7 +1,11 @@
 
-// Styles
 import { Link, useLocation } from 'react-router-dom';
+
+// Styles
 import navigationStyles from './navigation.module.scss';
+
+// Consts
+import { ABOUT, CONTACTS, DESIGN, FINE_ART, ILLUSTRATION, MEDIA_PROJECTS, PHOTOGRAPHY, ROUTES } from '../../consts';
 
 export default function Navigation({setMenuItem}) {
   const location = useLocation();
@@ -18,45 +22,45 @@ export default function Navigation({setMenuItem}) {
         <ul className={`${navigationStyles.navUl}`}>
           <Link 
             className={`${navigationStyles.navLink}`} 
-            to='media_projects' 
+            to={ROUTES.mediaProjects}
             state={{from: location.pathname}}
-            onMouseEnter={(e) => {hoverHandler(e, 'media_projects')}}
+            onMouseEnter={(e) => {hoverHandler(e, MEDIA_PROJECTS)}}
             onMouseLeave={(e) => {hoverHandler(e, '')}}
           >
             <li className={`${navigationStyles.navLi} ${navigationStyles.media}`}>MEDIA PROJECTS</li>
           </Link>
           <Link 
             className={`${navigationStyles.navLink}`} 
-            to='illustration' 
+            to={ROUTES.illustration}
             state={{from: location.pathname}}
-            onMouseEnter={(e) => {hoverHandler(e, 'illustration')}}
+            onMouseEnter={(e) => {hoverHandler(e, ILLUSTRATION)}}
             onMouseLeave={(e) => {hoverHandler(e, '')}}
           >
             <li className={`${navigationStyles.navLi} ${navigationStyles.illustration}`}>ILLUSTRATION</li>
           </Link>
           <Link 
             className={`${navigationStyles.navLink}`} 
-            to='design' 
+            to={ROUTES.design}
             state={{from: location.pathname}}
-            onMouseEnter={(e) => {hoverHandler(e, 'design')}}
+            onMouseEnter={(e) => {hoverHandler(e, DESIGN)}}
             onMouseLeave={(e) => {hoverHandler(e, '')}}
           >
             <li className={`${navigationStyles.navLi} ${navigationStyles.design}`}>DESIGN</li>
           </Link>
           <Link 
             className={`${navigationStyles.navLink}`} 
-            to='photography' 
+            to={ROUTES.photography}
             state={{from: location.pathname}}
-            onMouseEnter={(e) => {hoverHandler(e, 'photography')}}
+            onMouseEnter={(e) => {hoverHandler(e, PHOTOGRAPHY)}}
             onMouseLeave={(e) => {hoverHandler(e, '')}}
           >
             <li className={`${navigationStyles.navLi} ${navigationStyles.photography}`}>PHOTOGRAPHY</li>
           </Link>
           <Link 
             className={`${navigationStyles.navLink} ${navigationStyles.invisibleNavLink}`} 
-            to='fine_art' 
+            to={ROUTES.fineArt}
             state={{from: location.pathname}}
-            onMouseEnter={(e) => {hoverHandler(e, 'fine_art')}}
+            onMouseEnter={(e) => {hoverHandler(e, FINE_ART)}}
             onMouseLeave={(e) => {hoverHandler(e, '')}}
           >
             <li className={`${navigationStyles.navLi} ${navigationStyles.fineArt}`}>FINE ART (SOON)</li>
@@ -65,18 +69,18 @@ export default function Navigation({setMenuItem}) {
         <ul className={`${navigationStyles.infoBlock}`}>
           <Link 
             className={`${navigationStyles.navLink}`} 
-            to='about' 
+            to={ROUTES.about}
             state={{from: location.pathname}}
-            onMouseEnter={(e) => {hoverHandler(e, 'about')}}
+            onMouseEnter={(e) => {hoverHandler(e, ABOUT)}}
             onMouseLeave={(e) => {hoverHandler(e, '')}}
           >
             <li className={`${navigationStyles.navLi} ${navigationStyles.about}`}>ABOUT</li>
           </Link>
           <Link 
             className={`${navigationStyles.navLink}`} 
-            to='contacts' 
+            to={ROUTES.contacts}
             state={{from: location.pathname}}
-            onMouseEnter={(e) => {hoverHandler(e, 'contacts')}}
+            onMouseEnter={(e) => {hoverHandler(e, CONTACTS)}}
             onMouseLeave={(e) => {hoverHandler(e, '')}}
           >
             <li className={`${navigationStyles.navLi} ${navigationStyles.contacts} ${navigationStyles.invisibleNavLink}`}>CONTACTS</li>

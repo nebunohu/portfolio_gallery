@@ -55,8 +55,12 @@ $duration: 0.3s;
 
 .imageWrapper {
   height: 100%;
-  width: 73vw;
+  width: 70vw;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.imageWrapper img {
+  max-width: 40vw;
 }

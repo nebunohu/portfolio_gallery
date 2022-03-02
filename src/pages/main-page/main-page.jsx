@@ -14,26 +14,29 @@ import illustrationSrc from '../../images/illustration.png';
 import designSrc from '../../images/design.png';
 import photoSrc from '../../images/young-julia.png';
 
+// Consts
+import { ABOUT, DESIGN, ILLUSTRATION, MEDIA_PROJECTS, MOBILE_DISPLAY_WIDTH } from "../../consts/index.js";
+
 export default function MainPage() {
   const [menuItem, setMenuItem] = useState('');
   let backgroundStyle = `${styles.wrapper}`;
   let imageSrc = '';
 
-  if(window.innerWidth > 480) {
+  if(window.innerWidth > MOBILE_DISPLAY_WIDTH) {
     switch(menuItem) {
-      case 'media_projects':
+      case MEDIA_PROJECTS:
         backgroundStyle += ` ${styles.bgRed}`;
         imageSrc = taroSrc;
       break;
-      case 'illustration':
+      case ILLUSTRATION:
         backgroundStyle += ` ${styles.bgYellow}`;
         imageSrc = illustrationSrc;
       break;
-      case 'design':
+      case DESIGN:
         backgroundStyle += ` ${styles.bgPurple}`;
         imageSrc = designSrc;
       break;
-      case 'about':
+      case ABOUT:
         backgroundStyle += ` ${styles.bgGrenGrey}`;
         imageSrc = photoSrc;
       break;
