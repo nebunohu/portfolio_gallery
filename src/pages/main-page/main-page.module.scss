@@ -63,4 +63,9 @@ $duration: 0.3s;
 
 .imageWrapper img {
   max-width: 40vw;
+  max-height: 57vh;
+
+  @media screen and (max-width: 2048px) {
+    max-height: 47vh;
+  }
 }

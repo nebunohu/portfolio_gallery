@@ -14,7 +14,7 @@ import BackButton from '../back-button/back-button';
 export default function Gallery({data}) {
   const flag = useSelector(store => store.projects.dataRequestSuccess);
   const params = useParams();
-  
+  const parentID = 'albumContent';
 
   if(!flag) return null;
 
@@ -23,8 +23,8 @@ export default function Gallery({data}) {
       <BackButton />
       <div className={`${galleryStyles.wrapper}`}>
         <span className={`${galleryStyles.albumTitle}`}></span>
-        <div className={`${galleryStyles.albumContent}`}>
-          <MotionSlider>
+        <div className={`${galleryStyles.albumContent}`} id={parentID}>
+          <MotionSlider parentId={parentID}>
             {
               params.section === "photography" ?
                 data[0].content.map((el, index) => <img draggable={false} src={el.src} alt={el.caption} key={index} />)  :
