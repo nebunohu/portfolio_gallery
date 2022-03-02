@@ -9,7 +9,7 @@
   padding-left: 8vw;
   transform: translate(0, -50%);
   overflow: hidden;
-  @media (max-width: 420px) {
+  @media screen and (max-width: 420px) {
     padding-left: 0;
     height: 100vh;
   }
@@ -28,7 +28,7 @@
 .image {
   height: 100%;
   width: max-content;
-  @media (max-width: 420px) {
+  @media screen and (max-width: 420px) {
     width: 100vw;
     overflow: hidden;
     display: flex;
@@ -39,7 +39,7 @@
 
 .image img {
   min-height: 100%;
-  @media (max-width: 420px) {
+  @media screen and (max-width: 420px) {
     object-fit: cover;
     min-width: 100%;
     
