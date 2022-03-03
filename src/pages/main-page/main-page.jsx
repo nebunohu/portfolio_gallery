@@ -21,6 +21,7 @@ export default function MainPage() {
   const [menuItem, setMenuItem] = useState('');
   let backgroundStyle = `${styles.wrapper}`;
   let imageSrc = '';
+  let imageBorderStyle = '';
 
   if(window.innerWidth > MOBILE_DISPLAY_WIDTH) {
     switch(menuItem) {
@@ -38,6 +39,7 @@ export default function MainPage() {
       break;
       case ABOUT:
         backgroundStyle += ` ${styles.bgGrenGrey}`;
+        imageBorderStyle = `${styles.imageBorder}`;
         imageSrc = photoSrc;
       break;
       default:
@@ -49,7 +51,7 @@ export default function MainPage() {
     <div className={backgroundStyle}>
       <RouterSlider>
         {!!imageSrc && <div className={`${styles.imageWrapper}`}>
-            <img  src={imageSrc} alt=''/>
+            <img className={imageBorderStyle} src={imageSrc} alt=''/>
           </div>}
         {/*<Decoration />*/}
         <Navigation setMenuItem={(item) => setMenuItem(item)} />

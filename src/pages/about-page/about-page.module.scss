@@ -19,10 +19,15 @@
     top: 0;
     left: 0;
     margin-right: 0;
-    padding: 90px 0 60px 30px;
+    padding: 90px 30px 60px 30px;
     transform: translate(0, 0);
     min-width: 0;
   }
+}
+
+.photo {
+  max-width: 66vw;
+  margin-bottom: 79px;
 }
 
 .textArea {
@@ -43,9 +48,19 @@
 
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  padding-bottom: 50px;
+  padding-bottom: 105px;
 }
 
-.aboutWrapper:nth-child(3) {
-  margin-top: 105px;
+.aboutWrapper h:nth-child(4) {
+  margin: 71px 0 0 0;
+  @media screen and (max-width: 425px) {
+    margin-top: 0px;
+  }
 }
+
+.aboutWrapper h:nth-child(5) {
+  @media screen and (max-width: 425px) {
+    margin-top: 105px;
+  }
+}
+

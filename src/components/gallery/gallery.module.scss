@@ -1,17 +1,21 @@
+$gallery-padding: 8vw;
+
 .wrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-width: 960px;
-  height: 57vh;
   position: absolute;
   top: 50%;
-  padding-left: 8vw;
+  margin-top: 60px;
+  padding-left: $gallery-padding;
   transform: translate(0, -50%);
   overflow: hidden;
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 425px) {
+    position: relative;
     padding-left: 0;
+    margin-top: 0;
     height: 100vh;
+    padding-top: 0px;
   }
 }
 
@@ -22,13 +26,17 @@
 .albumContent {
   display: flex;
   flex-flow: row nowrap;
-  height: 100%;
+  height: 57vh;
+  @media screen and (max-width: 425px) {
+    padding-left: 0;
+    height: 100vh;
+  }
 }
 
 .image {
   height: 100%;
   width: max-content;
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 425px) {
     width: 100vw;
     overflow: hidden;
     display: flex;
@@ -38,10 +46,28 @@
 }
 
 .image img {
-  min-height: 100%;
-  @media screen and (max-width: 420px) {
+  max-height: 100%;
+  @media screen and (max-width: 425px) {
     object-fit: cover;
     min-width: 100%;
-    
+    height: 100%;
   }
 }
+
+.designerName {
+  @media screen and (max-width: 425px) {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    z-index: 1000;
+    font-size: 24px;
+  }
+}
+
+.galleryLink {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  margin-top: 111px;
+}
+

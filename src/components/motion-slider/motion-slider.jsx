@@ -10,18 +10,13 @@ export default function MotionSlider({ children, parentId}) {
   const trackRef = useRef(null);
   const resizeObserver = new ResizeObserver(entries => {
     for (let entry of entries) {
-      const rect = entry.target.getBoundingClientRect();
-      if(rect.x > window.innerWidth) {
-        setDragConstraints({
-          left: 0 - entry.target.scrollWidth - ((rect.x - window.innerWidth)*2),
-          right: 0
-        })
-      } else {
-        setDragConstraints({
-          left: window.innerWidth - entry.target.scrollWidth - (rect.x*2),
-          right: 0
-        })
-      }
+      setTimeout(() => {
+        const rect = entry.target.getBoundingClientRect();
+          setDragConstraints({
+            left: window.innerWidth - entry.target.scrollWidth - (rect.x*2),
+            right: 0
+          })
+      }, 600)
     }
   });
   
