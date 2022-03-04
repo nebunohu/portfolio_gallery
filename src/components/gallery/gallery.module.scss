@@ -6,7 +6,6 @@ $gallery-padding: 8vw;
   justify-content: flex-start;
   position: absolute;
   top: 50%;
-  margin-top: 60px;
   padding-left: $gallery-padding;
   transform: translate(0, -50%);
   overflow: hidden;
@@ -60,14 +59,17 @@ $gallery-padding: 8vw;
     top: 35px;
     right: 35px;
     z-index: 1000;
-    font-size: 24px;
+    font-size: 2vh;
   }
 }
 
 .galleryLink {
   color: white;
   text-decoration: none;
-  font-size: 24px;
-  margin-top: 111px;
+  font-size: 2vh;
+  margin-top: 10vh;
+  @media screen and (max-width: 425px) {
+    display: none;
+  }
 }
 

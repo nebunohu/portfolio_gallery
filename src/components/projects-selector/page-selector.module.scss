@@ -12,6 +12,10 @@
   }
 }
 
+.wrapper div:nth-child(even) {
+  padding-left: 30vw;
+}
+
 .projectName {
   @media(max-width: 690px) {
     width: 100%;
@@ -20,12 +24,13 @@
 
 .projectContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  width: 50%;
+  padding-left: 7.5vw;
+  width: 50vw;
   height: 50vh;
   font-family: Mulish, Arial, sans-serif;
-  font-size: 38px;
+  font-size: 3.5vh;
   text-transform: uppercase;
   
   @media(max-width: 690px) {
