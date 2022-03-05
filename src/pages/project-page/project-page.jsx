@@ -9,7 +9,18 @@ export default function ProjectPage() {
 
   return (
     <RouterSlider>
-      <BackButton />      
+      <BackButton />    
+      <div style={{
+        display: "flex", 
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100vw",
+        height: "100vh",
+        fontSize: "10vh"
+      }}
+      >
+        Project folder is empty now  
+      </div>  
     </RouterSlider>
   )
 }
