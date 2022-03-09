@@ -3,13 +3,18 @@ import { useState } from 'react';
 // Components
 import RouterSlider from "../router-slider/router-slider";
 import BackButton from "../back-button/back-button";
+import ProjectsSelectorItem from "../projects-selector-item/projects-selector-item";
+import BackgroundEye from '../background-eye/background-eye';
 
 // Styles
 import pageSelectorStyles from './page-selector.module.scss'
-import ProjectsSelectorItem from "../projects-selector-item/projects-selector-item";
+import { useParams } from 'react-router';
+
+
 
 export default function ProjectsSelector({data}) {
   const [projectsSelectorState, setProjectsSelectorState] = useState('');
+  const params = useParams();
   let decorClass = '';
 
   switch (projectsSelectorState) {
@@ -31,9 +36,10 @@ export default function ProjectsSelector({data}) {
   return (
     <RouterSlider>
       <BackButton />
-      {!!projectsSelectorState && <div 
+      {!!projectsSelectorState && (window.innerWidth > 480) && <div 
           className={`${pageSelectorStyles.decorElement} ${decorClass}`}
           />}
+        {params.section !== 'design' && (window.innerWidth > 480) && <BackgroundEye />}
       <section className={`${pageSelectorStyles.wrapper}`}>
         
         {

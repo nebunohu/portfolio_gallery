@@ -16,8 +16,10 @@
   text-transform: uppercase;
   
   @media(max-width: 690px) {
-    
+    padding: 0;
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
 

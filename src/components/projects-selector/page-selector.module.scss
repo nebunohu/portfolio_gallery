@@ -14,6 +14,10 @@
 
 .wrapper div:nth-child(even) {
   padding-left: 30vw;
+  @media(max-width: 480px) {
+    padding-left: 0;
+    
+  }
 }
 
 .projectName {

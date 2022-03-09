@@ -1,0 +1,53 @@
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+
+.eyeWrapper {
+  height: min-content;
+  position: relative;
+}
+
+$eye-boundary-height: 29vh;
+$eye-boundary-width: 36vw;
+$iris-height: $eye-boundary-height * 0.85;
+$pupil-height: $eye-boundary-height * 0.345;
+
+.eyeBoundary {
+  position: relative;
+  height: $eye-boundary-height;
+}
+
+.irisMoveBounds {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: $eye-boundary-height * 0.08;
+  width: $eye-boundary-height * 0.35;
+}
+
+
+.iris{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: $iris-height;
+  width: $iris-height;
+  border: 1px solid #A4A4A4;
+  border-radius: 50%;
+}
+
+.pupil {
+  composes: iris;
+  height: $pupil-height;
+  width: $pupil-height;
+}
