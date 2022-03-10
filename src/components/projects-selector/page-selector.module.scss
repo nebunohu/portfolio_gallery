@@ -49,7 +49,7 @@
 }
 
 .decorElement {
-  width: 845.21px;
+  width: 50vw;
   height: 2px; 
   position: absolute;
   top: 50%;
@@ -57,22 +57,41 @@
   margin-right: -50%
 }
 
+@keyframes opacity-change {
+  from {
+    opacity: 0;
+  }  
+  to {
+    opacity: 1;
+  }
+}
+
 .albumCovers {
   background-color: #13FF1D;
   transform: translate(-50%, -50%) rotate(-150.83deg);
+  animation-duration: 0.5s;
+  animation-name: opacity-change;
 }
+
+
 
 .posters {
   background-color: #FF5A13;
   transform: translate(-50%, -50%) rotate(149.01deg);
+  animation-duration: 0.5s;
+  animation-name: opacity-change;
 }
 
 .webDesign {
   background-color: #FFE713;
   transform: translate(-50%, -50%) rotate(149.01deg);
+  animation-duration: 0.5s;
+  animation-name: opacity-change;
 }
 
 .presentations {
   background-color: #1347FF;
   transform: translate(-50%, -50%) rotate(-150.83deg);
+  animation-duration: 0.5s;
+  animation-name: opacity-change;
 }

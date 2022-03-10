@@ -7,18 +7,25 @@ import styles from './motion-slider.module.scss';
 
 export default function MotionSlider({ children, parentId}) {
   const [dragConstraints, setDragConstraints] = useState({left: 0, right: 0});
+  const [timers, setTimers] = useState([]);
+  const stateRef = useRef(null);
+  stateRef.current = timers;
   const trackRef = useRef(null);
   const galleryWrapperRef = useRef(null);
-  const resizeObserver = new ResizeObserver(entries => {
+    
+  const resizeObserver = new ResizeObserver((entries) => {
     for (let entry of entries) {
-      setTimeout(() => {
-        const rect = entry.target.getBoundingClientRect();
+      const timerId = setTimeout(() => {
         const galleryStartPosition = galleryWrapperRef.current.getBoundingClientRect();
-          setDragConstraints({
-            left: (window.innerWidth-1 <= galleryStartPosition.width) ? (window.innerWidth - entry.target.scrollWidth - (galleryStartPosition.x*2)) : 0,
-            right: 0
-          })
+        setDragConstraints({
+          left: (window.innerWidth-1 <= galleryStartPosition.width) ? (window.innerWidth - entry.target.scrollWidth - (galleryStartPosition.x*2)) : 0,
+          right: 0
+        });
       }, 600)
+      let temp = stateRef.current;
+      temp.push(timerId);
+      setTimers(temp);
+      
     }
   });
   
@@ -28,6 +35,9 @@ export default function MotionSlider({ children, parentId}) {
     resizeObserver.observe(trackRef.current);
     return () => {
       resizeObserver.unobserve(trackRef.current);
+      for(let i = 0; i < timers.length; i++ ) {
+        clearTimeout(timers[i]);
+      }
     }
   }, []);
 

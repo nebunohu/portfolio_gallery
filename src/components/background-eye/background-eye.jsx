@@ -7,64 +7,28 @@ import styles from './background-eye.module.scss';
 
 const BackgroundEye = () => {
   const irisRef = useRef();
-
-  var calcSkew = function (max, windowWidth, cursorX, cursorY, skewY) {
-
-    // setup
-    var halfWidth = windowWidth / 2; // get the half width of the window
-    var halfCurrentPos = cursorX - halfWidth; // get position of x/y releative to halfWidth
-    var percentageDecimal = halfCurrentPos / halfWidth, // turn halfCurrentPos into a percentage decimal
-      skewDegree;
-  
-    if (cursorY < window.innerHeight / 2) return 0;
-  
-    /*if (!skewY) { // calculations for posX
-      if (halfCurrentPos > 0) {
-        skewDegree = -Math.abs(Math.floor(percentageDecimal * max)); // flip skewDegree to negetive for pos on right side
-      } else {
-        skewDegree = Math.abs(Math.floor(percentageDecimal * max)); // calc skewDegree for left side
-      }
-    } else { // calculations for posY	
-      if (halfCurrentPos > 0) {
-        skewDegree = Math.abs(Math.floor(percentageDecimal * max)); // calc skewDegree for right side
-      } else {
-        skewDegree = -Math.abs(Math.floor(percentageDecimal * max)); // flip skewDegree to negetive for pos on left side
-      }
-    }*/
-    return skewDegree;
-  }
-
-  useEffect(() => {
-    const iris = irisRef.current;
-    window.addEventListener("mousemove", (event) => {
-      // config
-      var /*self = this,*/
-      evnt = event,
-      cursorX = evnt.pageX,
-      cursorY = evnt.pageY,
+  const mouseMoveHandler = (event) => {
+    const 
+      iris = irisRef.current,
+      cursorX = event.pageX,
+      cursorY = event.pageY,
       windowWidth = window.innerWidth,
       windowHeight = window.innerHeight,
       posLeftPercetange = (cursorX / windowWidth) * 100, // turn cursorX pos into a percentage
       posTopPercentage = (cursorY / windowHeight) * 100; // turn cursorY pos into a percentage
-
     
-      iris.style.left = posLeftPercetange + '%';
-      iris.style.transform = 'translate(-50%, -50%) skewX(' + calcSkew(12, windowWidth, cursorX, cursorY) +
-        'deg) skewY(' + calcSkew(8, windowWidth, cursorX, cursorY, 'skewY') + 'deg)';
+      iris.style.left = `${posLeftPercetange}%`;
+      iris.style.top = `${posTopPercentage}%`;
+
+      event.stopPropagation();
+  }
+
+  useEffect(() => {
     
-
-
-      iris.style.top = posTopPercentage + '%';
-      iris.style.transform = 'translate(-50%, -50%) skewX(' + calcSkew(12, windowWidth, cursorX, cursorY) +
-        'deg)  skewY(' + calcSkew(8, windowWidth, cursorX, cursorY, 'skewY') + 'deg)';
-    
-
-    evnt.stopPropagation();
-
-    });
-    /*return () => {
-      window.removeEventListener("mousemove");
-    }*/
+    window.addEventListener("mousemove", mouseMoveHandler);
+    return () => {
+      window.removeEventListener("mousemove", mouseMoveHandler);
+    }
   })
   return (
     <div className={`${styles.wrapper}`}>
@@ -76,8 +40,6 @@ const BackgroundEye = () => {
           </div>
         </div>
       </div>
-      
-
     </div>
   )
 }
