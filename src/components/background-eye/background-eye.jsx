@@ -7,9 +7,11 @@ import styles from './background-eye.module.scss';
 
 const BackgroundEye = () => {
   const irisRef = useRef();
+  const pupilRef = useRef();
   const mouseMoveHandler = (event) => {
     const 
       iris = irisRef.current,
+      pupil = pupilRef.current,
       cursorX = event.pageX,
       cursorY = event.pageY,
       windowWidth = window.innerWidth,
@@ -17,10 +19,13 @@ const BackgroundEye = () => {
       posLeftPercetange = (cursorX / windowWidth) * 100, // turn cursorX pos into a percentage
       posTopPercentage = (cursorY / windowHeight) * 100; // turn cursorY pos into a percentage
     
-      iris.style.left = `${posLeftPercetange}%`;
-      iris.style.top = `${posTopPercentage}%`;
+    iris.style.left = `${posLeftPercetange}%`;
+    iris.style.top = `${posTopPercentage}%`;
 
-      event.stopPropagation();
+    pupil.style.left = `${posLeftPercetange}%`;
+    pupil.style.top = `${posTopPercentage}%`;
+
+    event.stopPropagation();
   }
 
   useEffect(() => {
@@ -36,7 +41,9 @@ const BackgroundEye = () => {
         <img className={`${styles.eyeBoundary}`} src={eyeBoundary} alt=''/>
         <div className={`${styles.irisMoveBounds}`}>
           <div className={`${styles.iris}`} ref={irisRef}>
-            <div className={`${styles.pupil}`} />  
+            <div className={`${styles.pupilMoveBounds}`}>
+              <div className={`${styles.pupil}`} ref={pupilRef} />  
+            </div>
           </div>
         </div>
       </div>

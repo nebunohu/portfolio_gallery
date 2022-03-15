@@ -51,3 +51,9 @@ $pupil-height: $eye-boundary-height * 0.345;
   height: $pupil-height;
   width: $pupil-height;
 }
+
+.pupilMoveBounds {
+  composes: irisMoveBounds;
+  height: $iris-height * 0.4;
+  width: $iris-height * 0.4;
+}
