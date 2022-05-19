@@ -1,3 +1,1 @@
-export const addJsonEnding = (endpoint) => {
-  return `${endpoint}.json`;
-}
+export const addJsonEnding = (endpoint) => `${endpoint}.json`;

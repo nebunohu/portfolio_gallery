@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 // Styles
 
@@ -20,33 +19,29 @@ import ProjectsSelector from '../../components/projects-selector/projects-select
 // Utils
 import { addJsonEnding } from '../../utils/addJsonEnding';
 
-
 export default function ProjectsPage() {
-  const data = useSelector(store => store.projects.data);
+  const data = useSelector((store) => store.projects.data);
   const dispatch = useDispatch();
   const params = useParams();
 
   useEffect(() => {
-		dispatch(getData(`${FIREBASE_URL}/${addJsonEnding(params.section)}`));
+    dispatch(getData(`${FIREBASE_URL}/${addJsonEnding(params.section)}`));
     return (() => {
-      dispatch({type: CLEAR_SUCCESS_FLAG});
-    })
-	}, [dispatch, params.section]);
+      dispatch({ type: CLEAR_SUCCESS_FLAG });
+    });
+  }, [dispatch, params.section]);
 
   switch (params.section) {
     case 'media_projects':
     case 'design': {
-      return <ProjectsSelector data= {data} />
-    } 
+      return <ProjectsSelector data={data} />;
+    }
 
     case 'illustration':
     case 'photography': {
-      return <Gallery data={data} />
+      return <Gallery data={data} />;
     }
 
-    default: return <NoPageFound />
-  
+    default: return <NoPageFound />;
   }
 }
-
-

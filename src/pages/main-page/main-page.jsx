@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // Components
-import Decoration from "../../components/decoration/decoration.jsx";
-import Navigation from "../../components/navigation/navigation.jsx";
-import RouterSlider from "../../components/router-slider/router-slider.jsx";
+import Decoration from '../../components/decoration/decoration.jsx';
+import Navigation from '../../components/navigation/navigation.jsx';
+import RouterSlider from '../../components/router-slider/router-slider.jsx';
 
 // Styles
 import styles from './main-page.module.scss';
@@ -15,7 +15,9 @@ import designSrc from '../../images/design.png';
 import photoSrc from '../../images/young-julia.png';
 
 // Consts
-import { ABOUT, DESIGN, ILLUSTRATION, MEDIA_PROJECTS, MOBILE_DISPLAY_WIDTH } from "../../consts/index.js";
+import {
+  ABOUT, DESIGN, ILLUSTRATION, MEDIA_PROJECTS, MOBILE_DISPLAY_WIDTH,
+} from '../../consts/index.js';
 
 export default function MainPage() {
   const [menuItem, setMenuItem] = useState('');
@@ -23,37 +25,39 @@ export default function MainPage() {
   let imageSrc = '';
   let imageBorderStyle = '';
 
-  if(window.innerWidth > MOBILE_DISPLAY_WIDTH) {
-    switch(menuItem) {
+  if (window.innerWidth > MOBILE_DISPLAY_WIDTH) {
+    switch (menuItem) {
       case MEDIA_PROJECTS:
         backgroundStyle += ` ${styles.bgRed}`;
         imageSrc = taroSrc;
-      break;
+        break;
       case ILLUSTRATION:
         backgroundStyle += ` ${styles.bgYellow}`;
         imageSrc = illustrationSrc;
-      break;
+        break;
       case DESIGN:
         backgroundStyle += ` ${styles.bgPurple}`;
         imageSrc = designSrc;
-      break;
+        break;
       case ABOUT:
         backgroundStyle += ` ${styles.bgGrenGrey}`;
         imageBorderStyle = `${styles.imageBorder}`;
         imageSrc = photoSrc;
-      break;
+        break;
       default:
-      break;
+        break;
     }
   }
 
   return (
     <div className={backgroundStyle}>
       <RouterSlider>
-        {!!imageSrc && <div className={`${styles.imageWrapper}`}>
-            <img className={imageBorderStyle} src={imageSrc} alt=''/>
-          </div>}
-        {/*<Decoration />*/}
+        {!!imageSrc && (
+        <div className={`${styles.imageWrapper}`}>
+          <img className={imageBorderStyle} src={imageSrc} alt="" />
+        </div>
+        )}
+        {/* <Decoration /> */}
         <Navigation setMenuItem={(item) => setMenuItem(item)} />
       </RouterSlider>
     </div>

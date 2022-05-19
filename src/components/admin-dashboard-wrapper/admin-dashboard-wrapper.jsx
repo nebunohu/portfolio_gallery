@@ -1,49 +1,46 @@
-import React from "react";
+import React from 'react';
 import {
   Link,
-  Outlet
+  Outlet,
 } from 'react-router-dom';
 
 // Components
 
 // Styles
-import dashboardStyles from "./admin-dashboard-wrapper.module.scss"
+import dashboardStyles from './admin-dashboard-wrapper.module.scss';
 
 // Utils
 
 export default function AdminDashboardWrapper(props) {
-
   return (
     <>
-      {/*<header>
+      {/* <header>
         <h1 style={{alignSelf: 'start'}}>Панель администрирования</h1>
-      </header>*/}
-      <div className={`${dashboardStyles.dashboardWrapper}`} >
+      </header> */}
+      <div className={`${dashboardStyles.dashboardWrapper}`}>
         <aside>
           <ul>
-          <li>
-              <Link className={`${dashboardStyles.link}`} to={`media_projects`}>Media projects</Link>
+            <li>
+              <Link className={`${dashboardStyles.link}`} to="media_projects">Media projects</Link>
             </li>
             <li>
-              <Link className={`${dashboardStyles.link}`} to={`photo`}>Photo</Link>
+              <Link className={`${dashboardStyles.link}`} to="photo">Photo</Link>
             </li>
             <li>
-              <Link className={`${dashboardStyles.link}`} to={`illustration`}>Illustration</Link>
+              <Link className={`${dashboardStyles.link}`} to="illustration">Illustration</Link>
             </li>
             <li>
-              <Link className={`${dashboardStyles.link}`} to={`design`}>Design</Link>
+              <Link className={`${dashboardStyles.link}`} to="design">Design</Link>
             </li>
-          </ul>  
+          </ul>
         </aside>
 
         <div className={`${dashboardStyles.center}`}>
           <Outlet />
         </div>
-        
+
       </div>
-      
+
     </>
   );
-  
-};
-
+}

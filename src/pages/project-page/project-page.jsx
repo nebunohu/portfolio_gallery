@@ -1,26 +1,25 @@
 // Components
+import React from 'react';
 import BackButton from '../../components/back-button/back-button';
 import RouterSlider from '../../components/router-slider/router-slider';
-
 // Styles
-import projectPageStyles from './project-page.module.scss';
+// import projectPageStyles from './project-page.module.scss';
 
 export default function ProjectPage() {
-
   return (
     <RouterSlider>
-      <BackButton />    
+      <BackButton />
       <div style={{
-        display: "flex", 
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100vw",
-        height: "100vh",
-        fontSize: "10vh"
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100vw',
+        height: '100vh',
+        fontSize: '10vh',
       }}
       >
-        Project folder is empty now  
-      </div>  
+        Project folder is empty now
+      </div>
     </RouterSlider>
-  )
+  );
 }
