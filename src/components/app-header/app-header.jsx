@@ -9,7 +9,7 @@ export default function AppHeader() {
         <a className="text-link" href="#projects">projects</a>
         <a className="text-link" href="#about">about</a>
         <a className="text-link" href="#contacts">contacts</a>
-        <a className="text-link" href="#">eng / rus</a>
+        <a className="text-link" href="/">eng / rus</a>
       </nav>
     </header>
   );
