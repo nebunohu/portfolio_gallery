@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import MotionSlider from '../motion-slider/motion-slider';
@@ -26,8 +28,8 @@ export default function Gallery({ data }) {
           <MotionSlider parentId={parentID}>
             {
               params.section === 'photography'
-                ? data[0].content.map((el, index) => <div className={`${galleryStyles.image}`} key={index}><img draggable={false} src={el.src} alt={el.caption} /></div>)
-                : data.map((el, index) => <div className={`${galleryStyles.image}`} key={index}><img draggable={false} src={el.src} alt={el.caption} /></div>)
+                ? data[0].content.map((el, index) => <div className={`${galleryStyles.image}`} key={Math.random(index)}><img draggable={false} src={el.src} alt={el.caption} /></div>)
+                : data.map((el, index) => <div className={`${galleryStyles.image}`} key={Math.random(index)}><img draggable={false} src={el.src} alt={el.caption} /></div>)
             }
           </MotionSlider>
 
@@ -40,3 +42,21 @@ export default function Gallery({ data }) {
 
   );
 }
+
+Gallery.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.oneOf([
+    PropTypes.shape({
+      caption: PropTypes.string,
+      src: PropTypes.string,
+      title: PropTypes.string,
+    }),
+    PropTypes.shape({
+      content: PropTypes.arrayOf(PropTypes.shape({
+        caption: PropTypes.string,
+        src: PropTypes.string,
+        title: PropTypes.string,
+      })),
+      name: PropTypes.string,
+    }),
+  ])).isRequired,
+};

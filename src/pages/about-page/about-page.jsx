@@ -1,3 +1,4 @@
+import React from 'react';
 import BackButton from '../../components/back-button/back-button';
 import RouterSlider from '../../components/router-slider/router-slider';
 

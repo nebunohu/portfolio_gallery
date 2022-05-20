@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // Components
 import { useParams } from 'react-router';
@@ -44,10 +45,41 @@ export default function ProjectsSelector({ data }) {
 
         {
           !!data && data.map((el, index) => (
-            <ProjectsSelectorItem el={el} setProjectsSelectorState={setProjectsSelectorState} key={index} />
+            <ProjectsSelectorItem
+              el={el}
+              setProjectsSelectorState={setProjectsSelectorState}
+              key={Math.random(index)}
+            />
           ))
         }
       </section>
     </RouterSlider>
   );
 }
+
+ProjectsSelector.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.shape({
+      name: PropTypes.string,
+    }),
+    PropTypes.shape({
+      caption: PropTypes.string,
+      src: PropTypes.string,
+      title: PropTypes.string,
+    }),
+    PropTypes.shape({
+      content: PropTypes.shape({
+        description: PropTypes.string,
+        items: PropTypes.arrayOf(PropTypes.shape({
+          src: PropTypes.string,
+          type: PropTypes.string,
+          value: PropTypes.string,
+        })),
+      }),
+      cover: PropTypes.string,
+      name: PropTypes.string,
+      url: PropTypes.string,
+      year: PropTypes.string,
+    }),
+  ])).isRequired,
+};

@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { getAuth } from 'firebase/auth';
 
-function LoginForm(props) {
+function LoginForm({ loginFlagSetter }) {
   const navigate = useNavigate();
-  const loginHandler = async function (event) {
+  const loginHandler = async (event) => {
     event.preventDefault();
     const login = event.target[0].value;
     const password = event.target[1].value;
@@ -22,7 +22,7 @@ function LoginForm(props) {
       if (!response.ok) {
         throw new Error('Ответ сети был не ок.');
       } else {
-        props.loginFlagSetter(true);
+        loginFlagSetter(true);
         const data = await response.json();
         localStorage.setItem('token', data.idToken);
         navigate('/admin/dashboard');
@@ -47,13 +47,19 @@ function LoginForm(props) {
   );
 }
 
-class AdminComponent extends React.Component {
-  render() {
-    return (
-      <LoginForm loginFlagSetter={this.props.loginFlagSetter} />
-    );
-  }
+function AdminComponent({ loginFlagSetter }) {
+  return (
+    <LoginForm loginFlagSetter={loginFlagSetter} />
+  );
 }
 
 export default AdminComponent;
 // export default AdminDashboard;
+
+LoginForm.propTypes = {
+  loginFlagSetter: PropTypes.func.isRequired,
+};
+
+AdminComponent.propTypes = {
+  loginFlagSetter: PropTypes.func.isRequired,
+};

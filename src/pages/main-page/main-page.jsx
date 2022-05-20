@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
 // Components
-import Decoration from '../../components/decoration/decoration.jsx';
-import Navigation from '../../components/navigation/navigation.jsx';
-import RouterSlider from '../../components/router-slider/router-slider.jsx';
+import Navigation from '../../components/navigation/navigation';
+import RouterSlider from '../../components/router-slider/router-slider';
 
 // Styles
 import styles from './main-page.module.scss';
@@ -17,7 +16,7 @@ import photoSrc from '../../images/young-julia.png';
 // Consts
 import {
   ABOUT, DESIGN, ILLUSTRATION, MEDIA_PROJECTS, MOBILE_DISPLAY_WIDTH,
-} from '../../consts/index.js';
+} from '../../consts';
 
 export default function MainPage() {
   const [menuItem, setMenuItem] = useState('');

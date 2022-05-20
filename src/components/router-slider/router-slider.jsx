@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../../utils/transitions';
 
@@ -15,3 +17,7 @@ export default function RouterSlider({ children }) {
     </motion.div>
   );
 }
+
+RouterSlider.propTypes = {
+  children: PropTypes.element.isRequired,
+};

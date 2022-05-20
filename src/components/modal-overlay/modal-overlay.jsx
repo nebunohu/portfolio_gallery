@@ -3,13 +3,13 @@ import React from 'react';
 // Styles
 import modalOverlayStyles from './modal-overlay.module.scss';
 
-export default function ModalOverlay(props) {
+export default function ModalOverlay({ closeModal, children}) {
   const onClickHandler = () => {
-    props.closeModal();
+    closeModal();
   };
   return (
     <div className={modalOverlayStyles.modalOverlay} onClick={onClickHandler}>
-      {props.children}
+      {children}
     </div>
   );
 }

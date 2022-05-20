@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
 // Styles
@@ -17,7 +18,9 @@ export default function MotionSlider({ children, parentId }) {
       const timerId = setTimeout(() => {
         const galleryStartPosition = galleryWrapperRef.current.getBoundingClientRect();
         setDragConstraints({
-          left: (window.innerWidth - 1 <= galleryStartPosition.width) ? (window.innerWidth - entry.target.scrollWidth - (galleryStartPosition.x * 2)) : 0,
+          left: (window.innerWidth - 1 <= galleryStartPosition.width)
+            ? (window.innerWidth - entry.target.scrollWidth - (galleryStartPosition.x * 2))
+            : 0,
           right: 0,
         });
       }, 600);
@@ -64,3 +67,8 @@ export default function MotionSlider({ children, parentId }) {
     </motion.div>
   );
 }
+
+MotionSlider.propTypes = {
+  children: PropTypes.element.isRequired,
+  parentId: PropTypes.string.isRequired,
+};

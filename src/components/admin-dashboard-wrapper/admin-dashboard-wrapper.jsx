@@ -11,7 +11,7 @@ import dashboardStyles from './admin-dashboard-wrapper.module.scss';
 
 // Utils
 
-export default function AdminDashboardWrapper(props) {
+export default function AdminDashboardWrapper() {
   return (
     <>
       {/* <header>

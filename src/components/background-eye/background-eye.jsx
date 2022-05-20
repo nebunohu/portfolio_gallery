@@ -1,5 +1,5 @@
+import React, { useEffect, useRef } from 'react';
 // Images
-import { useEffect, useRef } from 'react';
 import eyeBoundary from '../../images/eye-boundary.svg';
 
 // Styles

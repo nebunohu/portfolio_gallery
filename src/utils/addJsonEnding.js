@@ -1,1 +1,3 @@
-export const addJsonEnding = (endpoint) => `${endpoint}.json`;
+const addJsonEnding = (endpoint) => `${endpoint}.json`;
+
+export default addJsonEnding;

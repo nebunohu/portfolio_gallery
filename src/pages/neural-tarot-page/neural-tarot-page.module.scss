@@ -1,0 +1,63 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+  height: 100%;
+  font-family: "Mulish";
+  
+}
+
+.header {
+  
+}
+
+.header h1,
+.header h2 {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: fit-content;
+  max-width: 1200px;
+  padding: 28.7vh 0;
+}
+
+.paragraph {
+  text-align: center;
+  max-width: 900px;
+  margin: 11.3vh 0;
+  font-size: 26px;
+}
+
+.video {
+  margin-top: 165px;
+}
+
+.imgsGroup {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 45px;
+}
+
+.imgsAndText {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.textSection {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  margin-left: 85px;
+  padding-left: 60px;
+  border-left: 2px solid rgba(255, 90, 19, 1);
+}
+
+.textSection .paragraph {
+  margin: 0;
+  text-align: left;
+}

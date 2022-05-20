@@ -17,7 +17,7 @@ import { CLEAR_SUCCESS_FLAG } from '../../services/actions/projects-actions';
 import ProjectsSelector from '../../components/projects-selector/projects-selector';
 
 // Utils
-import { addJsonEnding } from '../../utils/addJsonEnding';
+import addJsonEnding from '../../utils/addJsonEnding';
 
 export default function ProjectsPage() {
   const data = useSelector((store) => store.projects.data);

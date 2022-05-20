@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
 // Styles
@@ -25,3 +27,21 @@ function ProjectsSelectorItem({ el, setProjectsSelectorState }) {
 }
 
 export default ProjectsSelectorItem;
+
+ProjectsSelectorItem.propTypes = {
+  el: PropTypes.shape({
+    content: PropTypes.shape({
+      description: PropTypes.string,
+      items: PropTypes.arrayOf(PropTypes.shape({
+        src: PropTypes.string,
+        type: PropTypes.string,
+        value: PropTypes.string,
+      })),
+    }),
+    cover: PropTypes.string,
+    name: PropTypes.string,
+    url: PropTypes.string,
+    year: PropTypes.string,
+  }).isRequired,
+  setProjectsSelectorState: PropTypes.func.isRequired,
+};

@@ -1,5 +1,5 @@
 // import { pasteHtmlTemplate } from "./adminDashboard.jsx";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Routes,
   Route,
@@ -8,11 +8,11 @@ import {
 import { AnimatePresence } from 'framer-motion';
 
 // Components
-import MainPage from '../../pages/main-page/main-page.jsx';
+import MainPage from '../../pages/main-page/main-page';
 import ProjectsPage from '../../pages/projects-page/projects-page';
-import ProjectPage from '../../pages/project-page/project-page.jsx';
-import AboutPage from '../../pages/about-page/about-page.jsx';
-import NoPageFound from '../../pages/no-page-found/no-page-found.jsx';
+import ProjectPage from '../../pages/project-page/project-page';
+import AboutPage from '../../pages/about-page/about-page';
+import NoPageFound from '../../pages/no-page-found/no-page-found';
 import AdminComponent from '../admin/admin';
 import AdminSectionComponent from '../admin-section-component/admin-section-component';
 
@@ -24,11 +24,11 @@ import EditProjectPage from '../edit-project-page/edit-project-page';
 import './style.scss';
 
 function App() {
-  const [state, setState] = React.useState({ isAdminPage: false });
-  const [isLogined, setIsLogined] = React.useState(false);
+  const [state, setState] = useState({ isAdminPage: false });
+  const [isLogined, setIsLogined] = useState(false);
   const location = useLocation();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (window.location.pathname.match(/\/admin/i)) setState({ ...state, isAdminPage: true });
     else setState({ ...state, isAdminPage: false });
   }, []);

@@ -1,28 +1,28 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 // Components
 
 // Utils
-import { SERVER_URL } from '../../utils/config';
+// import { SERVER_URL } from '../../utils/config';
 
 // Styles
 import upldPrjComponentStyles from './upload-project-component.module.scss';
 
-export default function UploadProjectComponent(props) {
-  const filesRef = React.useRef();
+export default function UploadProjectComponent({ sectionTitle }) {
+  const filesRef = useRef();
 
   function submitHandler(e) {
     e.preventDefault();
 
-    const sendFile = async (e) => {
+    const sendFile = async (event) => {
       const formData = new FormData();
 
       // formData.append("username", "abc123");
 
-      [...e.target.elements].forEach((el, index) => {
-        if (index !== e.target.elements.length - 1) {
+      [...event.target.elements].forEach((el, index) => {
+        if (index !== event.target.elements.length - 1) {
           if (el.type === 'file') {
             formData.append(el.name, el.files[0]);
           } else {
@@ -57,10 +57,10 @@ export default function UploadProjectComponent(props) {
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const storage = getStorage(app);
-        console.log(e.target[4].files[0]);
+        console.log(event.target[4].files[0]);
         console.log(storage);
         const storageRef = ref(storage, 'path/some-child');
-        uploadBytes(storageRef, e.target[4].files[0]).then((snapshot) => {
+        uploadBytes(storageRef, event.target[4].files[0]).then((snapshot) => {
           console.log('Uploaded a blob or file!');
         });
       } catch (error) {
@@ -80,7 +80,7 @@ export default function UploadProjectComponent(props) {
     <>
       <h2 className={`${upldPrjComponentStyles.title}`}>
         Загрузить новый проект в раздел
-        {props.sectionTitle}
+        {sectionTitle}
       </h2>
       <form className={`${upldPrjComponentStyles.uploadForm}`} onSubmit={submitHandler} encType="multipart/form-data">
         <label className={`${upldPrjComponentStyles.label}`} htmlFor="name">

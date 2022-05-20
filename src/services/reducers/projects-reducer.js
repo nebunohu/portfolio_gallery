@@ -9,7 +9,7 @@ const initialState = {
   data: [],
 };
 
-export function projectsReducer(state = initialState, action) {
+function projectsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_DATA_REQUEST: {
       return {
@@ -50,3 +50,5 @@ export function projectsReducer(state = initialState, action) {
     default: return state;
   }
 }
+
+export default projectsReducer;

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 // Components
 
-export default function EditProjectPageModal({ currentProject }) {
+export default function EditProjectPageModal() {
   const admin = useSelector((store) => store.admin);
   return (
 

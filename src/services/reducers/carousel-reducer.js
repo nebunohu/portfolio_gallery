@@ -21,3 +21,5 @@ export function carouselReducer(state = initialState, action) {
       return initialState;
   }
 }
+
+export default carouselReducer;
