@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { Link } from 'react-router-dom';
 import BackButton from '../../components/back-button/back-button';
 import RouterSlider from '../../components/router-slider/router-slider';
 
@@ -14,32 +16,29 @@ function ContactsPage() {
       <div className={`${styles.wrapper}`}>
         <BackButton />
         <div className={`${styles.imageWrapper}`}>
-            <img className={imageBorderStyle} src={izbushka} alt="" />
+            <img src={izbushka} alt="" />
           </div>
-        <div className={`${navigationStyles.navigationWrapper}`}>
-        <nav className={`${navigationStyles.nav}`}>
-          <ul className={`${navigationStyles.navUl}`}>
-            <Link
-              className={`${navigationStyles.navLink}`}
-              to={"3"}
-              state={{ from: location.pathname }}
+        <div className={`${styles.navigationWrapper}`}>
+        <nav className={`${styles.nav}`}>
+          <ul className={`${styles.navUl}`}>
+            <a
+              className={`${styles.navLink}`}
+              href="https://instagram.com"
             >
-              <li className={`${navigationStyles.navLi} ${navigationStyles.media}`}>TELEGRAM</li>
-            </Link>
-            <Link
-              className={`${navigationStyles.navLink}`}
-              to={"3"}
-              state={{ from: location.pathname }}
+              <li className={`${styles.navLi} ${styles.media}`}>TELEGRAM</li>
+            </a>
+            <a
+              className={`${styles.navLink}`}
+              href="https://instagram.com"
             >
-              <li className={`${navigationStyles.navLi} ${navigationStyles.illustration}`}>INSTAGRAM</li>
-            </Link>
-            <Link
-              className={`${navigationStyles.navLink}`}
-              to={"3"}
-              state={{ from: location.pathname }}
+              <li className={`${styles.navLi} ${styles.illustration}`}>INSTAGRAM</li>
+            </a>
+            <a
+              className={`${styles.navLink}`}
+              href="https://instagram.com"
             >
-              <li className={`${navigationStyles.navLi} ${navigationStyles.design}`}>BEHANCE</li>
-            </Link>
+              <li className={`${styles.navLi} ${styles.design}`}>BEHANCE</li>
+            </a>
           </ul>
         </nav>
         </div>
