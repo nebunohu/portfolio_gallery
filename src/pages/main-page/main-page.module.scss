@@ -27,6 +27,12 @@
   }
 }
 
+@keyframes bg-change-green {
+  to {
+    background-color: rgba(73, 166, 93, 1);
+  }
+}
+
 $duration: 0.3s;
 
 .bgRed {
@@ -51,6 +57,12 @@ $duration: 0.3s;
   animation-duration: $duration;
   animation-fill-mode: forwards;
   animation-name: bg-change-green-grey;
+}
+
+.bgGreen {
+  animation-duration: $duration;
+  animation-fill-mode: forwards;
+  animation-name: bg-change-green;
 }
 
 .imageBorder {

@@ -12,6 +12,7 @@ import MainPage from '../../pages/main-page/main-page';
 import ProjectsPage from '../../pages/projects-page/projects-page';
 import ProjectPage from '../../pages/project-page/project-page';
 import AboutPage from '../../pages/about-page/about-page';
+import ContactsPage from '../../pages/contacts-page/contacts-page';
 import NoPageFound from '../../pages/no-page-found/no-page-found';
 import AdminComponent from '../admin/admin';
 import AdminSectionComponent from '../admin-section-component/admin-section-component';
@@ -38,6 +39,7 @@ function App() {
       <Routes location={location} key={location.key}>
         <Route exact path="/" element={<MainPage />} />
         <Route exact path="/about" element={<AboutPage />} />
+        <Route exact path="/contacts" element={<ContactsPage />} />
         <Route path="/:section" element={<ProjectsPage />} />
         <Route path="/:section/:projectId" element={<ProjectPage />} />
         <Route exact path="/admin" element={<AdminComponent isLoggedIn={isLogined} loginFlagSetter={setIsLogined} />} />

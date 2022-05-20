@@ -86,7 +86,7 @@ export default function Navigation({ setMenuItem }) {
             onMouseEnter={(e) => { hoverHandler(e, CONTACTS); }}
             onMouseLeave={(e) => { hoverHandler(e, ''); }}
           >
-            <li className={`${navigationStyles.navLi} ${navigationStyles.contacts} ${navigationStyles.invisibleNavLink}`}>CONTACTS</li>
+            <li className={`${navigationStyles.navLi} ${navigationStyles.contacts}`}>CONTACTS</li>
           </Link>
         </ul>
         <div className={`${navigationStyles.email}`}>gryozart@gmail.com</div>

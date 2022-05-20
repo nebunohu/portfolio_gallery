@@ -12,10 +12,11 @@ import taroSrc from '../../images/taro-cards.png';
 import illustrationSrc from '../../images/illustration.png';
 import designSrc from '../../images/design.png';
 import photoSrc from '../../images/young-julia.png';
+import contactsSrc from '../../images/izbushka1.png';
 
 // Consts
 import {
-  ABOUT, DESIGN, ILLUSTRATION, MEDIA_PROJECTS, MOBILE_DISPLAY_WIDTH,
+  ABOUT, CONTACTS, DESIGN, ILLUSTRATION, MEDIA_PROJECTS, MOBILE_DISPLAY_WIDTH,
 } from '../../consts';
 
 export default function MainPage() {
@@ -42,6 +43,10 @@ export default function MainPage() {
         backgroundStyle += ` ${styles.bgGrenGrey}`;
         imageBorderStyle = `${styles.imageBorder}`;
         imageSrc = photoSrc;
+        break;
+      case CONTACTS:
+        backgroundStyle += ` ${styles.bgGreen}`;
+        imageSrc = contactsSrc;
         break;
       default:
         break;
