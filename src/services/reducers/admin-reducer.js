@@ -1,10 +1,10 @@
 import {
-  SET_CURRENT_PROJECT
-} from '../actions/admin-actions'
+  SET_CURRENT_PROJECT,
+} from '../actions/admin-actions';
 
 const initialState = {
   currentProject: '',
-}
+};
 
 export function adminReducer(state = initialState, action) {
   switch (action.type) {
@@ -12,8 +12,10 @@ export function adminReducer(state = initialState, action) {
       return {
         ...state,
         currentProject: action.currentProject,
-      }
+      };
     }
     default: return state;
   }
 }
+
+export default adminReducer;

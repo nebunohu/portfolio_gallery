@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
     "@rehooks/window-size": "^1.0.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -12,30 +13,37 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
+    "firebase": "^9.6.6",
     "framer-motion": "^4.1.17",
     "jsonwebtoken": "^8.5.1",
+    "lint": "^0.7.0",
     "mongoose": "^6.0.12",
     "multer": "^1.4.3",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.1",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
-    "react-router": "^5.2.0",
+    "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^5.0.0",
     "react-transition-group": "^4.4.2",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
+    "usehooks-ts": "^2.4.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "lint": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "client": "react-scripts start",
     "server": "node ./node_modules/nodemon/bin/nodemon.js ./server/app.js",
-    "start": "concurrently \"npm run server\" \"npm run client\""
+    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "firebase deploy --only hosting"
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +65,12 @@
   },
   "devDependencies": {
     "concurrently": "^6.3.0",
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "nodemon": "^2.0.15"
   }
 }

@@ -1,0 +1,31 @@
+.socialMedia {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 31px;
+  width: 147px;
+  height: 76px;
+  z-index: 110;
+  margin-top: 3vh;
+
+  @media screen and (max-width: 425px) {
+    position: fixed;
+    left: 0;
+    gap: 0;
+    bottom: 45px;  
+    width: 209px;
+    background-color: rgba(49, 49, 49, 1);
+    justify-content: space-around;
+    margin-top: 0;
+  }
+}
+
+.socialMedia a {
+  z-index: 1;
+}
+
+.socialMedia img {
+  pointer-events: none;
+  z-index: -1;
+}

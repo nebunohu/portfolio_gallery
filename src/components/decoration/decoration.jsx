@@ -1,19 +1,20 @@
-import { motion } from 'framer-motion'
+import React from 'react';
+import { motion } from 'framer-motion';
 
 // Styles
 import decorationStyles from './decoration.module.scss';
 
 export default function Decoration() {
   return (
-      <motion.iv 
-        className={`${decorationStyles.circleBig}`} 
-        animate={{
-          rotate: 360
-        }} 
-        transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-      >
+    <motion.div
+      className={`${decorationStyles.circleBig}`}
+      animate={{
+        rotate: 360,
+      }}
+      transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+    >
       <div className={`${decorationStyles.circleSmall}`} />
-      </motion.iv>
-    
-  )
+    </motion.div>
+
+  );
 }

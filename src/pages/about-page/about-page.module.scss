@@ -1,16 +1,65 @@
 .aboutWrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  width: 62.5vw;
+  width: 100vw;
   min-width: 960px;
-  height: 57vh;
+  height: 100vh;
+  padding: 185px 0 90px 150px;
   position: absolute;
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
+  overflow-x: hidden;
+  background-color: rgba(168, 181, 174, 1);
+
+  @media (max-width: 480px) {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-right: 0;
+    padding: 90px 30px 60px 30px;
+    transform: translate(0, 0);
+    min-width: 0;
+  }
 }
 
 .photo {
+  max-width: 66vw;
+  margin-bottom: 79px;
 }
+
+.textArea {
+  text-align: center;
+
+  @media (max-width: 480px) {
+    text-align: left;
+  }
+}
+
+.header {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 38px;
+  line-height: 107.12%;
+
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  padding-bottom: 105px;
+}
+
+.aboutWrapper h:nth-child(4) {
+  margin: 71px 0 0 0;
+  @media screen and (max-width: 425px) {
+    margin-top: 0px;
+  }
+}
+
+.aboutWrapper h:nth-child(5) {
+  @media screen and (max-width: 425px) {
+    margin-top: 105px;
+  }
+}
+

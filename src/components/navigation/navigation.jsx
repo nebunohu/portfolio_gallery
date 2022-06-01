@@ -1,41 +1,100 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
 
 // Styles
-import { Link, useLocation } from 'react-router-dom';
 import navigationStyles from './navigation.module.scss';
 
-export default function Navigation() {
+// Consts
+import {
+  ABOUT, CONTACTS, DESIGN, FINE_ART, ILLUSTRATION, MEDIA_PROJECTS, PHOTOGRAPHY, ROUTES,
+} from '../../consts';
+
+export default function Navigation({ setMenuItem }) {
   const location = useLocation();
+
+  const hoverHandler = (event, item) => {
+    event.preventDefault();
+    setMenuItem(item);
+  };
+
   return (
     <div className={`${navigationStyles.navigationWrapper}`}>
-      <nav>
-        <div className={`${navigationStyles.name}`}>julia gryoza</div>
+      <nav className={`${navigationStyles.nav}`}>
+        <div className={`${navigationStyles.name}`}>julia gryoza projects</div>
         <ul className={`${navigationStyles.navUl}`}>
-          <Link className={`${navigationStyles.navLink}`} to='media_projects' state={{from: location.pathname}}>
+          <Link
+            className={`${navigationStyles.navLink}`}
+            to={ROUTES.mediaProjects}
+            state={{ from: location.pathname }}
+            onMouseEnter={(e) => { hoverHandler(e, MEDIA_PROJECTS); }}
+            onMouseLeave={(e) => { hoverHandler(e, ''); }}
+          >
             <li className={`${navigationStyles.navLi} ${navigationStyles.media}`}>MEDIA PROJECTS</li>
           </Link>
-          <Link className={`${navigationStyles.navLink}`} to='illustration' state={{from: location.pathname}}>
+          <Link
+            className={`${navigationStyles.navLink}`}
+            to={ROUTES.illustration}
+            state={{ from: location.pathname }}
+            onMouseEnter={(e) => { hoverHandler(e, ILLUSTRATION); }}
+            onMouseLeave={(e) => { hoverHandler(e, ''); }}
+          >
             <li className={`${navigationStyles.navLi} ${navigationStyles.illustration}`}>ILLUSTRATION</li>
           </Link>
-          <Link className={`${navigationStyles.navLink}`} to='design' state={{from: location.pathname}}>
+          <Link
+            className={`${navigationStyles.navLink}`}
+            to={ROUTES.design}
+            state={{ from: location.pathname }}
+            onMouseEnter={(e) => { hoverHandler(e, DESIGN); }}
+            onMouseLeave={(e) => { hoverHandler(e, ''); }}
+          >
             <li className={`${navigationStyles.navLi} ${navigationStyles.design}`}>DESIGN</li>
           </Link>
-          <Link className={`${navigationStyles.navLink}`} to='photography' state={{from: location.pathname}}>
+          <Link
+            className={`${navigationStyles.navLink}`}
+            to={ROUTES.photography}
+            state={{ from: location.pathname }}
+            onMouseEnter={(e) => { hoverHandler(e, PHOTOGRAPHY); }}
+            onMouseLeave={(e) => { hoverHandler(e, ''); }}
+          >
             <li className={`${navigationStyles.navLi} ${navigationStyles.photography}`}>PHOTOGRAPHY</li>
           </Link>
-          <Link className={`${navigationStyles.navLink}`} to='fine_art' state={{from: location.pathname}}>
+          <Link
+            className={`${navigationStyles.navLink} ${navigationStyles.invisibleNavLink}`}
+            to={ROUTES.fineArt}
+            state={{ from: location.pathname }}
+            onMouseEnter={(e) => { hoverHandler(e, FINE_ART); }}
+            onMouseLeave={(e) => { hoverHandler(e, ''); }}
+          >
             <li className={`${navigationStyles.navLi} ${navigationStyles.fineArt}`}>FINE ART (SOON)</li>
-            </Link>
+          </Link>
         </ul>
         <ul className={`${navigationStyles.infoBlock}`}>
-          <Link className={`${navigationStyles.navLink}`} to='about' state={{from: location.pathname}}>
-            <li className={`${navigationStyles.navLi} ${navigationStyles.about}`}>ABOUT & <br/> CONTACTS</li>
+          <Link
+            className={`${navigationStyles.navLink}`}
+            to={ROUTES.about}
+            state={{ from: location.pathname }}
+            onMouseEnter={(e) => { hoverHandler(e, ABOUT); }}
+            onMouseLeave={(e) => { hoverHandler(e, ''); }}
+          >
+            <li className={`${navigationStyles.navLi} ${navigationStyles.about}`}>ABOUT</li>
           </Link>
-          {/*<Link className={`${navigationStyles.navLink}`} to='contacts' state={{from: location.pathname}}>
+          <Link
+            className={`${navigationStyles.navLink}`}
+            to={ROUTES.contacts}
+            state={{ from: location.pathname }}
+            onMouseEnter={(e) => { hoverHandler(e, CONTACTS); }}
+            onMouseLeave={(e) => { hoverHandler(e, ''); }}
+          >
             <li className={`${navigationStyles.navLi} ${navigationStyles.contacts}`}>CONTACTS</li>
-          </Link>*/}
+          </Link>
         </ul>
         <div className={`${navigationStyles.email}`}>gryozart@gmail.com</div>
       </nav>
     </div>
-  )
+  );
 }
+
+Navigation.propTypes = {
+  setMenuItem: PropTypes.func.isRequired,
+};

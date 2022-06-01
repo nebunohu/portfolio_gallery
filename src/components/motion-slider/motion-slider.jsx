@@ -1,57 +1,74 @@
+import React, { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
-import useWindowSize from '@rehooks/window-size';
-import { motion, useAnimation } from 'framer-motion';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+// Styles
+import styles from './motion-slider.module.scss';
 
-export default function MotionSlider({children}) {
-  const dispatch = useDispatch();
-  const velocity = 1;
-  const state = useSelector(store => store.carousel);
-  const transition = undefined;
+export default function MotionSlider({ children, parentId }) {
+  const [dragConstraints, setDragConstraints] = useState({ left: 0, right: 0 });
+  const [timers, setTimers] = useState([]);
+  const stateRef = useRef(null);
+  stateRef.current = timers;
+  const trackRef = useRef(null);
+  const galleryWrapperRef = useRef(null);
 
-  /*const negativeItems = state.items.map(
-    item => item * -1 + trackDimensions.x || 0
-  );
+  const resizeObserver = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      const timerId = setTimeout(() => {
+        const galleryStartPosition = galleryWrapperRef.current.getBoundingClientRect();
+        setDragConstraints({
+          left: (window.innerWidth - 1 <= galleryStartPosition.width)
+            ? (window.innerWidth - entry.target.scrollWidth - (galleryStartPosition.x * 2))
+            : 0,
+          right: 0,
+        });
+      }, 600);
+      const temp = stateRef.current;
+      temp.push(timerId);
+      setTimers(temp);
+    }
+  });
 
-  const windowDimensions = useWindowSize();
-  const controls = useAnimation();
+  useEffect(() => {
+    trackRef.current = document.getElementById('slider-track');
+    galleryWrapperRef.current = document.getElementById(parentId);
+    resizeObserver.observe(trackRef.current);
+    return () => {
+      resizeObserver.unobserve(trackRef.current);
+      for (let i = 0; i < timers.length; i++) {
+        clearTimeout(timers[i]);
+      }
+    };
+  }, []);
 
   function onDragEnd(event, info) {
     const offset = info.offset.x;
-    const correctedVelocity = info.velocity.x * velocity;
+    const correctedVelocity = info.velocity.x;
 
     const direction = correctedVelocity < 0 || offset < 0 ? 1 : -1;
     const startPosition = info.point.x - offset;
 
-    const endOffset =
-      direction === 1
-        ? Math.min(correctedVelocity, offset)
-        : Math.max(correctedVelocity, offset);
+    const endOffset = direction === 1
+      ? Math.min(correctedVelocity, offset)
+      : Math.max(correctedVelocity, offset);
     const endPosition = startPosition + endOffset;
+  }
 
-    const closestPosition = negativeItems.reduce((prev, curr) =>
-      Math.abs(curr - endPosition) < Math.abs(prev - endPosition) ? curr : prev
-    );
-
-    const activeSlide = negativeItems.indexOf(closestPosition);
-    dispatch({ type: "SET_ACTIVE_ITEM", activeItem: activeSlide });
-
-    controls.start({
-      x: Math.max(
-        closestPosition,
-        windowDimensions.innerWidth -
-          trackDimensions.width -
-          trackDimensions.x || 0
-      ),
-      transition
-    });
-  }*/
   return (
     <motion.div
-      
+      id="slider-track"
+      className={`${styles.track}`}
+      drag="x"
+      dragConstraints={dragConstraints}
+      onDragEnd={onDragEnd}
     >
       {children}
     </motion.div>
-  )
+  );
 }
+
+MotionSlider.propTypes = {
+  children: PropTypes.element.isRequired,
+  parentId: PropTypes.string.isRequired,
+};
